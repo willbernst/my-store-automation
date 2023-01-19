@@ -1,0 +1,34 @@
+{
+  "name": "my-store-automation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willbernst/my-store-automation.git"
+  },
+  "author": "William D Bernst",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/willbernst/my-store-automation/issues"
+  },
+  "homepage": "https://github.com/willbernst/my-store-automation#readme",
+  "dependencies": {
+    "cypress": "^12.3.0",
+    "typescript": "^4.9.4"
+  },
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^15.1.2",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.1.5",
+    "@faker-js/faker": "^7.6.0",
+    "@shelex/cypress-allure-plugin": "^2.34.0"
+  },
+  "cypress-cucumber-preprocess": {
+    "json": {
+      "enabled": true
+    }
+  }
+}
