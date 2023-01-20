@@ -4,7 +4,8 @@ import createBundler from "@bahmutov/cypress-esbuild-preprocessor";
 import { addCucumberPreprocessorPlugin } from "@badeball/cypress-cucumber-preprocessor";
 import createEsBuildPlugin from '@badeball/cypress-cucumber-preprocessor/esbuild'
 
-module.exports = defineConfig({
+export default defineConfig({
+  chromeWebSecurity: false,
   e2e: {
     baseUrl: 'https://marcelodebittencourt.com/demoprestashop',
     specPattern: "cypress/e2e/**/*.{js,ts,feature}",
@@ -23,4 +24,4 @@ module.exports = defineConfig({
       return config
     },
   },
-});
+})

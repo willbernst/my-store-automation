@@ -20,6 +20,10 @@ class SignInPage {
     alert() {
         cy.contains(signElements.altertText(), 'Authentication failed').should('be.visible')
     }
+
+    clickOnCreateAccountButton() {
+        cy.get(signElements.createAccountButton()).click()
+    }
 }
 
 export default new SignInPage()
