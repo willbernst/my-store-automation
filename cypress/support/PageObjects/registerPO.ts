@@ -1,6 +1,6 @@
 import registerElements from "../Elements/registerElements";
 
-class registerPage {
+class registerPagePO {
     checkUrlRegisterPage(){
         cy.url().should('contain', registerElements.registerPageUrl())
     }
@@ -54,4 +54,4 @@ class registerPage {
     }
 }
 
-export default new registerPage()
+export default new registerPagePO()

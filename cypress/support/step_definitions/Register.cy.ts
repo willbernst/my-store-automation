@@ -1,6 +1,6 @@
 import {Given, Then, When} from '@badeball/cypress-cucumber-preprocessor'
-import signPage from '../PageObjects/signPage'
-import registerPage from '../PageObjects/registerPage'
+import signPage from '../PageObjects/signInPO'
+import registerPage from '../PageObjects/registerPO'
 import {faker} from '@faker-js/faker'
 
 

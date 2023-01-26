@@ -1,5 +1,5 @@
 import {Given, Then, When} from '@badeball/cypress-cucumber-preprocessor'
-import signPage from '../PageObjects/signPage'
+import signPage from '../PageObjects/signInPO'
 import correctData from '../../fixtures/correctUserDataForLogin.json'
 import wrongData from '../../fixtures/incorrectUserDataForLogin.json'
 
@@ -33,5 +33,5 @@ When('I enter a invalid email and passowrd and click on Sign In button', () => {
 })
 
 Then('I must be warned about my wrong credentials', () => {
-    signPage.alert()
+    signPage.alert('Authentication failed')
 })

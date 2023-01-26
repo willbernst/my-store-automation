@@ -1,6 +1,6 @@
-import signElements from "../Elements/signElements";
+import signElements from "../Elements/signInElements";
 
-class SignInPage {
+class SignInPagePO {
     typeEmail(email){
         cy.get(signElements.inputEmail()).first().type(email)
     }
@@ -17,8 +17,8 @@ class SignInPage {
         cy.get(signElements.textConfirm()).should('contain.text', 'William Dewes')
     }
 
-    alert() {
-        cy.contains(signElements.altertText(), 'Authentication failed').should('be.visible')
+    alert(alertMessage) {
+        cy.contains(signElements.altertText(), alertMessage).should('be.visible')
     }
 
     clickOnCreateAccountButton() {
@@ -26,4 +26,4 @@ class SignInPage {
     }
 }
 
-export default new SignInPage()
+export default new SignInPagePO()
