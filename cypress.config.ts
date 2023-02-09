@@ -5,6 +5,7 @@ import { addCucumberPreprocessorPlugin } from "@badeball/cypress-cucumber-prepro
 import createEsBuildPlugin from '@badeball/cypress-cucumber-preprocessor/esbuild'
 
 export default defineConfig({
+  projectId: "tmgmg7",
   chromeWebSecurity: false,
   e2e: {
     baseUrl: 'https://marcelodebittencourt.com/demoprestashop',

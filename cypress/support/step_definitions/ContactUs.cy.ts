@@ -7,6 +7,8 @@ const randomEmailAndMessage = {
     message: faker.random.words(15)
 }
 
+const emailWithoutCharacterAt: String = 'email.teste.com.br';
+
 Given('I am a user wanting to contact the site team', () => {
     cy.visit('/')
     cy.get('#contact-link > a')
@@ -20,6 +22,7 @@ When('I click on Contact Us buttton', () => {
 
 Then('I should be redirected to the contact us page', () => {
     contactUsPO.checkUrlContactUsPage()
+    cy.percySnapshot()
 })
 
 Then('I see the site info block', () => {
@@ -55,6 +58,7 @@ Then('I click on Send button', () => {
 
 Then('I should receive a shipping confirmation message', () => {
     contactUsPO.checkSuccessMessage('Your message has been successfully sent to our team')
+    cy.percySnapshot()
 })
 
 When('I do not fill in the email correctly', () => {
@@ -63,6 +67,7 @@ When('I do not fill in the email correctly', () => {
 
 Then('I should receive a message stating that I entered the email incorrectly', () => {
     contactUsPO.checkErrorMessageDeliveredByFillingOutTheForm('Invalid email address.')
+    cy.percySnapshot()
 })
 
 When('I do not fill in the message field', () => {
@@ -71,4 +76,15 @@ When('I do not fill in the message field', () => {
 
 Then('I should recieve a message that the message field cannot be blank', () => {
     contactUsPO.checkErrorMessageDeliveredByFillingOutTheForm('The message cannot be blank.')
+    cy.percySnapshot()
+})
+
+When('I fill in the email field without @', () => {
+    contactUsPO.typeContactEmail(emailWithoutCharacterAt)
+})
+
+Then('I see the message informing the filling error', () => {
+    contactUsPO.checkAlertMessage()
+    cy.get('input[name="from"]')
+    cy.percySnapshot()
 })

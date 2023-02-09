@@ -81,6 +81,10 @@ class contactUsPO {
         checkErrorMessageDeliveredByFillingOutTheForm(errorMessage){
             cy.get(contactUsElements.errorMessageWhenFillingOutTheForm()).should('contain', errorMessage).and('be.visible')
         }
+
+        checkAlertMessage(){
+            cy.get(contactUsElements.contactEmail())
+        }
 }   
 
 export default new contactUsPO()

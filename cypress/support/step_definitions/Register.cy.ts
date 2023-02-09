@@ -8,6 +8,7 @@ const randomUserData = {
     firstname: faker.name.firstName('male'),
     lastname: faker.name.lastName('male'),
     email: faker.internet.email(),
+    invalidEmail: faker.random.word() + '@' + faker.random.word(),
     password: faker.internet.password(10),
     birthdate: {
         month: faker.datatype.number({
@@ -21,6 +22,20 @@ const randomUserData = {
         year: faker.datatype.number({
             'min': 1950,
             'max': 2010
+        })
+    },
+    wrongBirthDate: {
+        month: faker.datatype.number({
+            'min': 1,
+            'max': 12
+        }),
+        day: faker.datatype.number({
+            'min': 1,
+            'max': 29
+        }),
+        year: faker.datatype.number({
+            'min': 19510,
+            'max': 20102
         })
     }
 
@@ -39,6 +54,7 @@ When('I click on the create account button', () => {
 
 Then('I should be redirected to the register page', () => {
     registerPage.checkUrlRegisterPage()
+    cy.percySnapshot()
 })
 
 
@@ -82,6 +98,7 @@ When('I check the newsletter checkbox', () => {
 
 When('I check the terms policy checkbox', () => {
     registerPage.termsPolicyCheckbox()
+    cy.percySnapshot()
 })
 
 Then('I click on the register button', () => {
@@ -90,6 +107,27 @@ Then('I click on the register button', () => {
 
 Then('I should be redirected to the home page', () => {
     cy.url().should('contain', Cypress.config().baseUrl)
+    cy.percySnapshot()
 })
 
 /* --------------------------------------------------------------------------- */
+
+When('I enter a invalid birthdate', () => {
+    registerPage.typeBirthDate(randomUserData.wrongBirthDate.month, randomUserData.wrongBirthDate.day, randomUserData.wrongBirthDate.year)
+})
+
+Then('I should see a message informing the wrong filling of the date of birth', () => {
+    registerPage.catchWrongBirthDateAlert()
+    cy.percySnapshot()
+})
+
+/* --------------------------------------------------------------------------- */
+
+When('I enter a email with invalid format', () => {
+    registerPage.typeEmail(randomUserData.invalidEmail)
+})
+
+Then('I should see a message informing the wrong filling of the email', () => {
+    registerPage.catchInvalidFormatEmailAlert()
+    cy.percySnapshot()
+})

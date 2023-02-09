@@ -49,6 +49,14 @@ class registerPagePO {
         cy.get(registerElements.termsAndConditionsPolicy()).find('input[type="checkbox"]').check()
     }
 
+    catchWrongBirthDateAlert(){
+        cy.get(registerElements.alert()).should('be.visible').and('contain', 'Format should be 05/31/1970.')
+    }
+
+    catchInvalidFormatEmailAlert(){
+        cy.get(registerElements.alert()).should('be.visible').and('contain', 'Invalid format.')
+    }
+
     clickOnRegisterButton(){
         cy.get(registerElements.registerButton()).click('center', {force: true})
     }

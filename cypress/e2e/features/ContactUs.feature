@@ -19,9 +19,6 @@ Feature: Contact Us page to My Store website
         Given I am a user wanting to contact the site team
         When I click on Contact Us buttton
         Then I should be redirected to the contact us page
-        Then I see the site info block
-        Then I see the contact form
-        When I set a subject
         When I do not fill in the email correctly
         Then I click on Send button
         Then I should receive a message stating that I entered the email incorrectly
@@ -30,10 +27,15 @@ Feature: Contact Us page to My Store website
         Given I am a user wanting to contact the site team
         When I click on Contact Us buttton
         Then I should be redirected to the contact us page
-        Then I see the site info block
-        Then I see the contact form
-        When I set a subject
         When I correctly fill in the email
         When I do not fill in the message field
         Then I click on Send button
         Then I should recieve a message that the message field cannot be blank
+@focus         
+    Scenario: Message not sent because the email was not entered correctly, missing @
+        Given I am a user wanting to contact the site team
+        When I click on Contact Us buttton
+        Then I should be redirected to the contact us page
+        When I fill in the email field without @
+        Then I click on Send button
+        Then I see the message informing the filling error

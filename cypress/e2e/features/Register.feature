@@ -24,5 +24,25 @@ Feature: Register to My Store website
         Then I click on the register button
         Then I should be redirected to the home page
         
-    
-    Scenario: Unsuccessful registration
+    Scenario: Registration not made because the date of birth was filled in wrong
+        Given I access the registration page
+        When I enter a firstname
+        When I enter a lastname
+        When I enter a valid email
+        When I enter a valid password
+        When I enter a invalid birthdate
+        When I check the terms policy checkbox
+        Then I click on the register button
+        Then I should see a message informing the wrong filling of the date of birth
+
+    # Scenario: Unsuccessful registration because the email was not entered correctly, missing @
+
+    Scenario: Unsuccessful registration because the email was nmot entered correctly, has invalid format
+        Given I access the registration page
+        When I enter a firstname
+        When I enter a lastname
+        When I enter a email with invalid format
+        When I enter a valid password
+        When I check the terms policy checkbox
+        Then I click on the register button
+        Then I should see a message informing the wrong filling of the email

@@ -10,6 +10,8 @@ class registerElements {
     passwordField = () => {return '.input-group > .form-control'}
     birthDateField = () => {return ':nth-child(6) > .col-md-6 > .form-control'}
 
+    alert = () => {return '.alert'}
+
     reciveOffersCheckbox = ( )=> {return ':nth-child(7) > .col-md-6 > .custom-checkbox > label'}
     newsletterCheckbox = () => {return ':nth-child(8) > .col-md-6 > .custom-checkbox > label'}
     termsAndConditionsPolicy = () => {return ':nth-child(9) > .col-md-6 > .custom-checkbox > label'}
