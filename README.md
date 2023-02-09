@@ -1,5 +1,5 @@
 <h1>My Store Automation Tests</h1>
-<h3>Projeto de Automação de Testes utilizando o site Minha Loja. Buscando usar as ferramentas mais atuais e boas práticas</h3>
+<h3>Projeto de Automação de Testes utilizando o site My Store. Buscando usar as ferramentas mais atuais e boas práticas</h3>
 
 <img src="printWebSite/homepage.png" alt="Home Page" width="1366px">
 
