@@ -11,5 +11,4 @@ env
 .DS_Store
 package-lock.json
 cypress/e2e/fixtures
-printWebSite
 .github/

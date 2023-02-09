@@ -1,7 +1,7 @@
 <h1>My Store Automation Tests</h1>
 <h3>Projeto de Automação de Testes utilizando o site My Store. Buscando usar as ferramentas mais atuais e boas práticas</h3>
 
-<img src="printWebSite/homepage.png" alt="Home Page" width="1366px">
+<img src="socialImages/homepage.png" alt="Home Page" width="1366px">
 
 ## Neste projeto foi implementado:
 - Testes e2e com Cypress.
