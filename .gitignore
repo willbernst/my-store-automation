@@ -12,3 +12,4 @@ env
 package-lock.json
 cypress/e2e/fixtures
 printWebSite
+.github/
