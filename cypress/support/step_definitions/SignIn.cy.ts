@@ -1,11 +1,8 @@
-import correctData from '../../fixtures/correctUserDataForLogin.json'
-import wrongData from '../../fixtures/incorrectUserDataForLogin.json'
 import {Before, Given, Then, When} from '@badeball/cypress-cucumber-preprocessor'
 import signPage from '../PageObjects/signInPO'
 
 
 Given('I access the main page of the my store website', () => {
-
     cy.visit('/')
 })
 
@@ -15,9 +12,11 @@ When('I access the login page', () => {
 })
 
 When('I enter a valid email and password and click on Sign In button', () => {
-    signPage.typeEmail(correctData.email)
-    signPage.typePassword(correctData.password)
-    signPage.submit()
+    cy.fixture('correctUserDataForLogin').then((correctUserData) => {
+        signPage.typeEmail(correctUserData.email)
+        signPage.typePassword(correctUserData.password)
+        signPage.submit()
+    })
 })
 
 Then('I must check the name "William Dewes" as login user validation', () => {
@@ -28,9 +27,11 @@ Then('I must check the name "William Dewes" as login user validation', () => {
 // ----------------------------- //
 
 When('I enter a invalid email and passowrd and click on Sign In button', () => {
-    signPage.typeEmail(wrongData.email)
-    signPage.typePassword(wrongData.password)
-    signPage.submit()
+    cy.fixture('incorrectUserDataForLogin').then((incorrectUserData) => {
+        signPage.typeEmail(incorrectUserData.email)
+        signPage.typePassword(incorrectUserData.password)
+        signPage.submit()
+    })
 })
 
 Then('I must be warned about my wrong credentials', () => {
