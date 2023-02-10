@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/willbernst/my-store-automation.git"
@@ -16,17 +15,17 @@
   },
   "homepage": "https://github.com/willbernst/my-store-automation#readme",
   "dependencies": {
-    "cypress": "^12.3.0",
+    "cypress": "^12.5.1",
     "cypress-real-events": "^1.7.6",
-    "typescript": "^4.9.4"
+    "typescript": "^4.9.5"
   },
   "devDependencies": {
-    "@badeball/cypress-cucumber-preprocessor": "^15.1.2",
+    "@badeball/cypress-cucumber-preprocessor": "^15.1.3",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.1.5",
     "@faker-js/faker": "^7.6.0",
     "@percy/cli": "^1.18.0",
     "@percy/cypress": "^3.1.2",
-    "@shelex/cypress-allure-plugin": "^2.34.0"
+    "@shelex/cypress-allure-plugin": "^2.35.2"
   },
   "cypress-cucumber-preprocess": {
     "json": {
