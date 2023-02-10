@@ -1,25 +1,19 @@
-name: Cypress Tests
+name: Cypress tests
 on: [push]
 jobs:
   cypress-run:
     name: Cypress run
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress install
-        uses: cypress-io/github-action@v5.0.8
-        with:
-          runTests: false
 
       - name: Cypress run
         uses: cypress-io/github-action@v5.0.8
         with:
-          install: false
-          start: yarn start-server
+          record: true
         env:
           CI: true
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
