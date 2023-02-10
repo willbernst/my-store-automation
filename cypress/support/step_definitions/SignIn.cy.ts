@@ -12,7 +12,7 @@ When('I access the login page', () => {
 })
 
 When('I enter a valid email and password and click on Sign In button', () => {
-    cy.fixture('userData').then((userData) => {
+    cy.fixture('userData.json').then((userData) => {
         signPage.typeEmail(userData.correctData.email)
         signPage.typePassword(userData.correctData.password)
         signPage.submit()
@@ -27,7 +27,7 @@ Then('I must check the name "William Dewes" as login user validation', () => {
 // ----------------------------- //
 
 When('I enter a invalid email and passowrd and click on Sign In button', () => {
-    cy.fixture('userData').then((userData) => {
+    cy.fixture('userData.json').then((userData) => {
         signPage.typeEmail(userData.wrongData.email)
         signPage.typePassword(userData.wrongData.password)
         signPage.submit()

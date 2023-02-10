@@ -1,0 +1,10 @@
+{
+    "correctData": {
+        "email": "williamdewes@mystore.com",
+        "password": "william1103"
+    },
+    "wrongData": {
+        "email": "williamdewes@topsecret.com",
+        "password": "123topsecret123"
+    }
+}
