@@ -18,7 +18,6 @@ jobs:
         uses: cypress-io/github-action@v5.0.8
         with:
           install: false
-          working-directory: cypress
           start: yarn start-server
         env:
           CI: true
