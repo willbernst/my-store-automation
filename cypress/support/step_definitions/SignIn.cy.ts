@@ -1,10 +1,11 @@
-import {Given, Then, When} from '@badeball/cypress-cucumber-preprocessor'
-import signPage from '../PageObjects/signInPO'
 import correctData from '../../fixtures/correctUserDataForLogin.json'
 import wrongData from '../../fixtures/incorrectUserDataForLogin.json'
+import {Before, Given, Then, When} from '@badeball/cypress-cucumber-preprocessor'
+import signPage from '../PageObjects/signInPO'
 
 
 Given('I access the main page of the my store website', () => {
+
     cy.visit('/')
 })
 
