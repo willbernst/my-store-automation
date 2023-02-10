@@ -1,7 +1,5 @@
 name: Cypress Tests
-
 on: [push]
-
 jobs:
   cypress-run:
     name: Cypress run
@@ -11,14 +9,18 @@ jobs:
         uses: actions/checkout@v3
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
+      - name: Cypress install
+        uses: cypress-io/github-action@v5.0.8
+        with:
+          runTests: false
+
       - name: Cypress run
         uses: cypress-io/github-action@v5.0.8
         with:
-          install-command: yarn --frozen-lockfile --non-interactive
-          build: yarn run build
-          start: yarn start
-          record: true
-          command-prefix: 'percy exec -- npx'
+          install: false
+          working-directory: cypress/e2e
+          start: yarn start-server
         env:
+          CI: true
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
