@@ -14,7 +14,7 @@ Para executar o projeto de testes em seu computador, é necessário ter instalad
 
 - [git](https://git-scm.com/) (utilizei a v2.38.1.windows.1);
 - [Node.js](https://nodejs.org/en/) (utilizei a v18.13.0);
-- [npm](https://www.npmjs.com/) (utilizei a v9.1.1);
+- [npm](https://www.npmjs.com/) (utilizei a v9.4.2);
 
 > É recomendado a utilização das mesmas versões ou mais recentes.
 > Para verificar as versões do git, Node.js e npm instaladas, execute o comando `git --version && node --version && npm --version`;
