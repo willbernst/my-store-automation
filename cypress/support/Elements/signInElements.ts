@@ -1,4 +1,5 @@
 class SignElements {
+    signInButton = () => {return '.user-info > a'}
     singInUrl = () => {return '/login?back=my-account'}
     inputEmail = () => {return 'input[type="email"]'}
     inputPassword = () => {return 'input[type="password"]'}

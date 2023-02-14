@@ -5,7 +5,6 @@
 
 ## Neste projeto foi implementado:
 - Testes e2e com Cypress.
-- Cenários de testes com Cucumber.
 - Uso do padrão Page Objects.
 - Uso de Mapa de Elementos.
 

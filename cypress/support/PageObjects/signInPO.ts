@@ -1,6 +1,9 @@
 import signElements from "../Elements/signInElements";
 
 class SignInPagePO {
+    clickOnSignInButton(){
+        cy.get(signElements.signInButton()).click()
+    }
     accessSignInPage(){
         cy.visit(signElements.singInUrl())
     }
