@@ -50,6 +50,12 @@ class contactUsPO {
             cy.get(contactUsElements.contactEmail()).type(email)
         }
 
+        validatePreviouslyFilledEmailWhenUserLoggedIn(){
+            cy.fixture('userData.json').then((userData) => {
+                cy.get(contactUsElements.contactEmail()).should('contain.value', userData.correctData.email)
+            })
+        }
+
         doNotFillInTheEmailInput(){
             cy.get(contactUsElements.contactEmail()).should('be.empty')
         }

@@ -1,4 +1,5 @@
 class SignElements {
+    singInUrl = () => {return '/login?back=my-account'}
     inputEmail = () => {return 'input[type="email"]'}
     inputPassword = () => {return 'input[type="password"]'}
     submitButton = () => {return '#submit-login'}

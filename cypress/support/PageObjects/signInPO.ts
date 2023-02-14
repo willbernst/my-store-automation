@@ -1,6 +1,9 @@
 import signElements from "../Elements/signInElements";
 
 class SignInPagePO {
+    accessSignInPage(){
+        cy.visit(signElements.singInUrl())
+    }
     typeEmail(email){
         cy.get(signElements.inputEmail()).first().type(email)
     }

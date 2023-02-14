@@ -24,8 +24,6 @@ Then('I must check the name "William Dewes" as login user validation', () => {
     signPage.confirmLogin()
 })
 
-// ----------------------------- //
-
 When('I enter a invalid email and passowrd and click on Sign In button', () => {
     cy.fixture('userData.json').then((userData) => {
         signPage.typeEmail(userData.wrongData.email)

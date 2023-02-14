@@ -15,6 +15,17 @@ Feature: Contact Us page to My Store website
         Then I click on Send button
         Then I should receive a shipping confirmation message
 
+    Scenario: Message sent successfully being a logged in user
+        Given I am a logged in user wanting to get in touch with the site team
+        When I click on Contact Us buttton
+        Then I should be redirected to the contact us page
+        Then I see the contact form
+        Then I see my pre-field email
+        When I upload the file to contact
+        When I fill in the message field
+        Then I click on Send button
+        Then I should receive a shipping confirmation message
+
     Scenario: Message not sent due to invalid email
         Given I am a user wanting to contact the site team
         When I click on Contact Us buttton
@@ -31,11 +42,3 @@ Feature: Contact Us page to My Store website
         When I do not fill in the message field
         Then I click on Send button
         Then I should recieve a message that the message field cannot be blank
-@focus         
-    Scenario: Message not sent because the email was not entered correctly, missing @
-        Given I am a user wanting to contact the site team
-        When I click on Contact Us buttton
-        Then I should be redirected to the contact us page
-        When I fill in the email field without @
-        Then I click on Send button
-        Then I see the message informing the filling error

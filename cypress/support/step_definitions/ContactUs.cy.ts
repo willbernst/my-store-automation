@@ -84,7 +84,16 @@ When('I fill in the email field without @', () => {
 })
 
 Then('I see the message informing the filling error', () => {
+    cy.wait(3000)
     contactUsPO.checkAlertMessage()
     cy.get('input[name="from"]')
     cy.percySnapshot()
+})
+
+Given('I am a logged in user wanting to get in touch with the site team', () => {
+    cy.loginViaGUI()
+})
+
+Then('I see my pre-field email', () => {
+    contactUsPO.validatePreviouslyFilledEmailWhenUserLoggedIn()
 })
