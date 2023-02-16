@@ -3,8 +3,15 @@
 import signInPO from "../../support/PageObjects/signInPO";
 
 describe('Sign In page test suit', () => {
-    it('Access sign in page and validate components', () => {
-        
+    it.only('Access sign in page and validate components', () => {
+        signInPO.accessSignInPage()
+        signInPO.checkSignInPageContent()
+        signInPO.checkSignInPageTitle()
+        signInPO.checkLabelAndInputEmail()
+        signInPO.checkLabelAndInputPassword()
+        signInPO.checkForgotYourPasswordLink()
+        signInPO.checkCreateAccountLink()
+        signInPO.checkSignInButton()
     });
     it('Login Successfully', () => {
         cy.visit('/')
