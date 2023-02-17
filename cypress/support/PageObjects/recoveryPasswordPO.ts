@@ -13,13 +13,13 @@ class recoveryPasswordPO {
         cy.get(recoveryPasswordElements.forgotYourPasswordLink()).click()
     }
     
-    checkRecoveryPasswordTitle(){
-        cy.get(recoveryPasswordElements.recoveryPasswordScreenTitle()).should('contain', 'Forgot your password?')
+    checkRecoveryPasswordTitle(title:string){
+        cy.get(recoveryPasswordElements.recoveryPasswordScreenTitle()).should('contain', title)
     }
 
-    checkInformationCardForPasswordRecovery(){
+    checkInformationCardForPasswordRecovery(recoveryPasswordText: string){
         cy.get(recoveryPasswordElements.recoveryPasswordCard()).should('be.visible')
-        cy.get(recoveryPasswordElements.recoveryPasswordCard()).children().eq(1).should('contain', recoveryPasswordElements.recoveryPasswordCardText())
+        cy.get(recoveryPasswordElements.recoveryPasswordCard()).children().eq(1).should('contain', recoveryPasswordText)
     }
 
     checkEmailFillField(){
@@ -35,17 +35,17 @@ class recoveryPasswordPO {
         cy.get(recoveryPasswordElements.sendResetLinkButton()).click()
     }
 
-    checkPasswordRecoveryEmailSendingSuccessMessage(email){
+    checkPasswordRecoveryEmailSendingSuccessMessage(successMessage:string, email){
         cy.get(recoveryPasswordElements.passwordRecoveryLinkSendingSuccessAlert()).should('exist').and('be.visible')
-        cy.get(recoveryPasswordElements.recoveryPageAlert()).should('contain', recoveryPasswordElements.successMessage() + email)
+        cy.get(recoveryPasswordElements.recoveryPageAlert()).should('contain', successMessage + email)
     }
 
     clickOnBackToLoginPageLink(){
         cy.get(recoveryPasswordElements.backToLoginPageLink()).click()
     }
 
-    checkInvalidEmailMessage(){
-        cy.get(recoveryPasswordElements.recoveryPageAlert()).should('contain', recoveryPasswordElements.invalidEmailMessage())
+    checkInvalidEmailMessage(invalidEmailMessage:string){
+        cy.get(recoveryPasswordElements.recoveryPageAlert()).should('contain', invalidEmailMessage)
     }
 }
 

@@ -21,13 +21,13 @@ describe('Contact us page test suite', () => {
         
         cy.percySnapshot()
 
-        contactUsPO.checkAddressOnTheStoreInformationBlock()
-        contactUsPO.checkEmailOnTheStoreInformationBlock()
+        contactUsPO.checkAddressOnTheStoreInformationBlock('Loja de Teste', 'United States')
+        contactUsPO.checkEmailOnTheStoreInformationBlock('Email us')
         contactUsPO.checkContactUsForm()
-        contactUsPO.checkContactUsTitlePage()
-        contactUsPO.chooseASubjectForTheContact()
+        contactUsPO.checkContactUsTitlePage('Contact us')
+        contactUsPO.chooseASubjectForTheContact('Webmaster')
         contactUsPO.typeContactEmail(randomEmailAndMessage.email)
-        contactUsPO.insertAccessoryFile()
+        contactUsPO.insertAccessoryFile('cypress/fixtures/docContactUsFixture.pdf')
         contactUsPO.checkAttachmentTitle('docContactUsFixture')
         contactUsPO.typeAMessage(randomEmailAndMessage.message)
         contactUsPO.clickOnSubmitButton()
@@ -35,7 +35,7 @@ describe('Contact us page test suite', () => {
         cy.percySnapshot()
     });
 
-    it('Message sent successfully being a logged in user', () => {
+    it.only('Message sent successfully being a logged in user', () => {
         cy.loginViaGUI()
         contactUsPO.clickOnContactUsHeaderLink()
         contactUsPO.checkUrlContactUsPage()
@@ -44,9 +44,9 @@ describe('Contact us page test suite', () => {
         cy.percySnapshot()
 
         contactUsPO.checkContactUsForm()
-        contactUsPO.checkContactUsTitlePage()
+        contactUsPO.checkContactUsTitlePage('Contact us')
         contactUsPO.validatePreviouslyFilledEmailWhenUserLoggedIn()
-        contactUsPO.insertAccessoryFile()
+        contactUsPO.insertAccessoryFile('cypress/fixtures/docContactUsFixture.pdf')
         contactUsPO.checkAttachmentTitle('docContactUsFixture')
         contactUsPO.typeAMessage(randomEmailAndMessage.message)
         contactUsPO.clickOnSubmitButton()

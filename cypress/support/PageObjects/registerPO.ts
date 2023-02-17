@@ -49,12 +49,12 @@ class registerPagePO {
         cy.get(registerElements.termsAndConditionsPolicy()).find('input[type="checkbox"]').check()
     }
 
-    catchWrongBirthDateAlert(){
-        cy.get(registerElements.alert()).should('be.visible').and('contain', 'Format should be 05/31/1970.')
+    catchWrongBirthDateAlert(correctFormatBirthDate:string){
+        cy.get(registerElements.alert()).should('be.visible').and('contain', correctFormatBirthDate)
     }
 
-    catchInvalidFormatEmailAlert(){
-        cy.get(registerElements.alert()).should('be.visible').and('contain', 'Invalid format.')
+    catchInvalidFormatEmailAlert(invalidFormatEmailMessage){
+        cy.get(registerElements.alert()).should('be.visible').and('contain', invalidFormatEmailMessage)
     }
 
     clickOnRegisterButton(){

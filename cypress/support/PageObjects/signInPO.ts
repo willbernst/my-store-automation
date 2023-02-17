@@ -13,8 +13,8 @@ class SignInPagePO {
         cy.get(signElements.signInPageContent()).should('exist').and('be.visible')
     }
 
-    checkSignInPageTitle(){
-        cy.get(signElements.signInPageTitle()).should('be.visible').and('contain', 'Log in to your account')
+    checkSignInPageTitle(singInPageTitle:string){
+        cy.get(signElements.signInPageTitle()).should('be.visible').and('contain', singInPageTitle)
     }
 
     checkLabelAndInputEmail(){
@@ -22,22 +22,22 @@ class SignInPagePO {
         cy.get(signElements.inputEmail()).should('be.empty')
     }
 
-    checkLabelAndInputPassword(){
-        cy.get(signElements.labelPassword()).should('be.visible').and('contain', 'Password')
+    checkLabelAndInputPassword(passwordLabel:string, buttonLabel:string){
+        cy.get(signElements.labelPassword()).should('be.visible').and('contain', passwordLabel)
         cy.get(signElements.inputPassword()).should('be.empty')
-        cy.get(signElements.showPasswordButton()).should('be.visible').and('contain.text', 'Show')
+        cy.get(signElements.showPasswordButton()).should('be.visible').and('contain.text', buttonLabel)
     }
 
-    checkForgotYourPasswordLink(){
-        cy.get(signElements.forgotPasswordLink()).should('be.visible').and('contain.text', 'Forgot your password?')
+    checkForgotYourPasswordLink(forgotYourPasswordLabel:string){
+        cy.get(signElements.forgotPasswordLink()).should('be.visible').and('contain.text', forgotYourPasswordLabel)
     }
 
-    checkSignInButton(){
-        cy.get(signElements.submitButton()).should('be.visible').and('contain.text', 'Sign in')
+    checkSignInButton(signInLabelButton:string){
+        cy.get(signElements.submitButton()).should('be.visible').and('contain.text', signInLabelButton)
     }
 
-    checkCreateAccountLink(){
-        cy.get(signElements.createAccountLink()).should('be.visible').and('contain.text', 'No account? Create one here')
+    checkCreateAccountLink(createAccountLabel){
+        cy.get(signElements.createAccountLink()).should('be.visible').and('contain.text', createAccountLabel)
     }
 
     typeEmail(email){
@@ -52,8 +52,8 @@ class SignInPagePO {
         cy.get(signElements.submitButton()).click()
     }
 
-    confirmLogin(){
-        cy.get(signElements.textConfirm()).should('contain.text', 'William Dewes')
+    confirmLogin(userName:string){
+        cy.get(signElements.textConfirm()).should('contain.text', userName)
     }
 
     alert(alertMessage) {

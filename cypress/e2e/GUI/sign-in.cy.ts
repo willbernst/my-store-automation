@@ -3,15 +3,17 @@
 import signInPO from "../../support/PageObjects/signInPO";
 
 describe('Sign In page test suit', () => {
-    it.only('Access sign in page and validate components', () => {
+    it('Access sign in page and validate components', () => {
         signInPO.accessSignInPage()
         signInPO.checkSignInPageContent()
-        signInPO.checkSignInPageTitle()
+        signInPO.checkSignInPageTitle('Log in to your account')
         signInPO.checkLabelAndInputEmail()
-        signInPO.checkLabelAndInputPassword()
-        signInPO.checkForgotYourPasswordLink()
-        signInPO.checkCreateAccountLink()
-        signInPO.checkSignInButton()
+        signInPO.checkLabelAndInputPassword('Password', 'Show')
+        signInPO.checkForgotYourPasswordLink('Forgot your password?')
+        signInPO.checkCreateAccountLink('No account? Create one here')
+        signInPO.checkSignInButton('Sign in')
+        
+        cy.percySnapshot()
     });
     it('Login Successfully', () => {
         cy.visit('/')
@@ -22,7 +24,9 @@ describe('Sign In page test suit', () => {
             signInPO.submit()
         })
         cy.url().should('contain', '/my-account')
-        signInPO.confirmLogin()
+        signInPO.confirmLogin('William Dewes')
+
+        cy.percySnapshot()
     });
 
     it('Unsuccessful Login', () => {
@@ -34,5 +38,7 @@ describe('Sign In page test suit', () => {
             signInPO.submit()
         })
         signInPO.alert('Authentication failed')
+
+        cy.percySnapshot()
     });
 });

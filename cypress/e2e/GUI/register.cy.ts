@@ -77,7 +77,7 @@ describe('Register page test suit', () => {
         cy.percySnapshot()
 
         registerPO.clickOnRegisterButton()
-        registerPO.catchWrongBirthDateAlert()
+        registerPO.catchWrongBirthDateAlert('Format should be 05/31/1970.')
 
         cy.percySnapshot()
     });
@@ -93,7 +93,7 @@ describe('Register page test suit', () => {
         cy.percySnapshot()
         
         registerPO.clickOnRegisterButton()
-        registerPO.catchInvalidFormatEmailAlert()
+        registerPO.catchInvalidFormatEmailAlert('Invalid format.')
 
         cy.percySnapshot()
     });

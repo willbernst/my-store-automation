@@ -9,21 +9,21 @@ class contactUsPO {
             cy.get(contactUsElements.contactUsHeaderLink()).click()
         }
 
-        checkAddressOnTheStoreInformationBlock(){
+        checkAddressOnTheStoreInformationBlock(address: string, country: string){
             cy.get(contactUsElements.storeInformations())
                 .find(contactUsElements.storeInfosBlock())
                 .find(contactUsElements.storeInfosData())
                 .eq(0)
-                .should('contain', 'Loja de Teste')
-                .and('contain', 'United States')
+                .should('contain', address)
+                .and('contain', country)
         }
 
-        checkEmailOnTheStoreInformationBlock() {
+        checkEmailOnTheStoreInformationBlock(emailUsLabel: string) {
             cy.get(contactUsElements.storeInformations())
                 .find(contactUsElements.storeInfosBlock())
                 .find(contactUsElements.storeInfosData())
                 .eq(1)
-                .should('contain', 'Email us')
+                .should('contain', emailUsLabel)
                 
             cy.get('a[href*="mailto:admin@marcelodebittencourt.com"')
                 .first()
@@ -35,15 +35,15 @@ class contactUsPO {
                 .should('be.visible')
         }
 
-        checkContactUsTitlePage(){
+        checkContactUsTitlePage(contactUsTitle: string){
             cy.get(contactUsElements.contactUsTitlePage())
                 .should('be.visible')
-                .and('have.text', 'Contact us')
+                .and('have.text', contactUsTitle)
         }
 
-        chooseASubjectForTheContact(){
+        chooseASubjectForTheContact(subject:string){
             cy.get(contactUsElements.contactSubject())
-                .select('Webmaster')
+                .select(subject)
         }
 
         typeContactEmail(email){
@@ -60,8 +60,8 @@ class contactUsPO {
             cy.get(contactUsElements.contactEmail()).should('be.empty')
         }
 
-        insertAccessoryFile(){
-            cy.get(contactUsElements.contactAttachment()).selectFile('cypress/fixtures/docContactUsFixture.pdf')
+        insertAccessoryFile(file){
+            cy.get(contactUsElements.contactAttachment()).selectFile(file)
         }
 
         checkAttachmentTitle(fixtureName: String){
