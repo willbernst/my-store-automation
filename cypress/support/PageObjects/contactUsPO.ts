@@ -41,13 +41,20 @@ class contactUsPO {
                 .and('have.text', contactUsTitle)
         }
 
+        checkDefaultValueOfSubjectField(){
+            cy.get(contactUsElements.contactSubject()).find('option[value=2]').should('be.selected')
+        }
+
         chooseASubjectForTheContact(subject:string){
-            cy.get(contactUsElements.contactSubject())
-                .select(subject)
+            cy.get(contactUsElements.contactSubject()).select(subject)
         }
 
         typeContactEmail(email){
             cy.get(contactUsElements.contactEmail()).type(email)
+        }
+
+        checkDefaultValueOfEmailField(){
+            cy.get(contactUsElements.contactEmail()).should('have.attr', 'placeholder', 'your@email.com').and('be.empty')
         }
 
         validatePreviouslyFilledEmailWhenUserLoggedIn(){
@@ -64,12 +71,20 @@ class contactUsPO {
             cy.get(contactUsElements.contactAttachment()).selectFile(file)
         }
 
+        checkDefaultValueAttachment(){
+            cy.get(contactUsElements.contactAttachmentTitle()).eq(1).should('be.empty')
+        }
+
         checkAttachmentTitle(fixtureName: String){
             cy.get(contactUsElements.contactAttachmentTitle()).eq(1).invoke('val').should('contain', fixtureName)
         }
 
         typeAMessage(message){
             cy.get(contactUsElements.contactMessage()).type(message)
+        }
+
+        checkDefaultValueMessageInput(){
+            cy.get(contactUsElements.contactMessage()).should('have.attr', 'placeholder', 'How can we help?').and('be.empty')
         }
 
         doNotFillInTheMessageInput(){

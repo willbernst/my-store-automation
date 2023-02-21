@@ -15,7 +15,7 @@ describe('Recovery password page tests suit', () => {
         cy.percySnapshot()
     });
 
-    it.only('Requesting link to reset password', () => {
+    it('Requesting link to reset password', () => {
         recoveryPasswordPO.accessRecoveryPasswordPage()
         recoveryPasswordPO.checkUrlRecoveryPasswordPage()
         cy.fixture('userData.json').then((userData) => {

@@ -10,21 +10,24 @@ const randomEmailAndMessage = {
 
 describe('Contact us page test suite', () => {
     it('Access contact us page and validate components', () => {
-        
-    });
-    it('Message sent successfully without being a logged in user', () => {
         cy.visit('/')
         contactUsPO.clickOnContactUsHeaderLink()
-        contactUsPO.clickOnContactUsHeaderLink()
         contactUsPO.checkUrlContactUsPage()
-        contactUsPO.checkUrlContactUsPage()
-        
         cy.percySnapshot()
-
         contactUsPO.checkAddressOnTheStoreInformationBlock('Loja de Teste', 'United States')
         contactUsPO.checkEmailOnTheStoreInformationBlock('Email us')
         contactUsPO.checkContactUsForm()
         contactUsPO.checkContactUsTitlePage('Contact us')
+        contactUsPO.checkDefaultValueOfSubjectField()
+        contactUsPO.checkDefaultValueOfEmailField()
+        contactUsPO.checkDefaultValueAttachment()
+        contactUsPO.checkDefaultValueMessageInput()
+
+    });
+    it('Message sent successfully without being a logged in user', () => {
+        cy.visit('/')
+        contactUsPO.clickOnContactUsHeaderLink()
+        contactUsPO.checkUrlContactUsPage()
         contactUsPO.chooseASubjectForTheContact('Webmaster')
         contactUsPO.typeContactEmail(randomEmailAndMessage.email)
         contactUsPO.insertAccessoryFile('cypress/fixtures/docContactUsFixture.pdf')
@@ -35,7 +38,7 @@ describe('Contact us page test suite', () => {
         cy.percySnapshot()
     });
 
-    it.only('Message sent successfully being a logged in user', () => {
+    it('Message sent successfully being a logged in user', () => {
         cy.loginViaGUI()
         contactUsPO.clickOnContactUsHeaderLink()
         contactUsPO.checkUrlContactUsPage()
