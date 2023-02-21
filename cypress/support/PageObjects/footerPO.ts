@@ -63,11 +63,29 @@ class footerPO{
         cy.get(footerElements.newProductsTitle()).should('contain.text', newProductsPageTitle)
     }
 
-    clickOnTheDesuredLinkInsideTheFooter(menuLinkLabel: string, pageUrl: string, pageTile: string){
-        cy.get(footerElements.productsColumn()).children().eq(2).find('a').contains(menuLinkLabel).should('be.visible').click()
+    clickOnTheDesiredLinkInsideTheFooter(columnsOnTheFooter:any ,menuLinkLabel: string, pageUrl: string, pageTile: string){
+        cy.get(columnsOnTheFooter).children().eq(2).find('a').contains(menuLinkLabel).should('be.visible').click()
         cy.url().should('contain', pageUrl)
         cy.get(footerElements.pageTitle()).should('contain', pageTile)
     }
+
+    checkTitleAndSubtitleInsideContentCard(contentTitle: string, contentSubtitle:string, contentText1: string, contentText2: string){
+        cy.get(footerElements.contentTitle()).should('contain', contentTitle).and('be.visible')
+        cy.get(footerElements.contentSubtitle()).should('contain', contentSubtitle).and('be.visible')
+    }
+
+    checkTextInsideContentCard(firstParagraph, secondParagraph){
+        cy.fixture("our-company-contentText").then((contentText) =>{
+            cy.get(footerElements.contentText1()).should('contain', firstParagraph)
+            cy.get(footerElements.contentText2()).should('contain', secondParagraph)
+        })
+    }
+
+    checkRedirectLinksWithinLegalNoticeText(){
+        cy.get('p > a').eq(0).should('have.attr', 'href', footerElements.prestaShopSoftwareLink())
+        cy.get('p > a').eq(1).should('have.attr', 'href', footerElements.prestaShopEcommerceLink())
+    }
+
 }
 
 export default new footerPO()
