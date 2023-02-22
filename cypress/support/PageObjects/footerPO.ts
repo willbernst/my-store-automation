@@ -63,10 +63,10 @@ class footerPO{
         cy.get(footerElements.newProductsTitle()).should('contain.text', newProductsPageTitle)
     }
 
-    clickOnTheDesiredLinkInsideTheFooter(columnsOnTheFooter:any ,menuLinkLabel: string, pageUrl: string, pageTile: string){
+    clickOnTheDesiredLinkInsideTheFooter(columnsOnTheFooter:any ,menuLinkLabel: string, pageUrl: string, sectionTitleLevel: string,pageTile: string){
         cy.get(columnsOnTheFooter).children().eq(2).find('a').contains(menuLinkLabel).should('be.visible').click()
         cy.url().should('contain', pageUrl)
-        cy.get(footerElements.pageTitle()).should('contain', pageTile)
+        cy.get(sectionTitleLevel).should('contain', pageTile)
     }
 
     checkTitleAndSubtitleInsideContentCard(contentTitle: string, contentSubtitle:string, contentText1: string, contentText2: string){

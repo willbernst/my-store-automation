@@ -9,7 +9,7 @@ describe('Recovery password page tests suit', () => {
         recoveryPasswordPO.clickOnForgotYourPasswordLink()
         recoveryPasswordPO.checkUrlRecoveryPasswordPage()
         recoveryPasswordPO.checkRecoveryPasswordTitle('Forgot your password?')
-        recoveryPasswordPO.checkInformationCardForPasswordRecovery('Please enter the email address you used to register. You will receive a temporary link to reset your password ')
+        recoveryPasswordPO.checkInformationCardForPasswordRecovery('Please enter the email address you used to register. You will receive a temporary link to reset your password.')
         recoveryPasswordPO.checkEmailFillField()
 
         cy.percySnapshot()

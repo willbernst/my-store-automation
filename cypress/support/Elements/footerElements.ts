@@ -7,7 +7,6 @@ class footerElements{
     inconvenienceInformationText = () => {return 'h4'}
     requestToSearchAgain = () => {return '#content > p'}
     inputToSearchProducts = () => {return 'input[type="text"]'}
-    pageTitle = () => {return 'h2' && 'h1'}
     contentTitle = () => {return '#content > h2'}
     contentSubtitle = () => {return '#content > h3'}
     contentText1 = () => {return '#content > :nth-child(3)'}
