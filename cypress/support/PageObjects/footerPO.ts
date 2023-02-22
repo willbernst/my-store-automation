@@ -52,28 +52,25 @@ class footerPO{
         cy.get(footerElements.inputToSearchProducts()).eq(1).should('have.attr', 'placeholder', placeHolderText)
     }
 
-    clickOnPriceDropInsideProductsColumn(pricesDropLabel: string, pricesDropPageTitle: string){
-        cy.url().should('contain', footerElements.pricesDropUrl())
-        cy.get(footerElements.pricesDropTitle()).should('contain.text', pricesDropPageTitle)
-    }
-
-    clickOnNewProductsInsideProductsColumn(newProductsLabel: string, newProductsPageTitle: string){
-
-        cy.url().should('contain', footerElements.newProductsUrl())
-        cy.get(footerElements.newProductsTitle()).should('contain.text', newProductsPageTitle)
-    }
-
     clickOnTheDesiredLinkInsideTheFooter(columnsOnTheFooter:any ,menuLinkLabel: string, pageUrl: string, sectionTitleLevel: string,pageTile: string){
         cy.get(columnsOnTheFooter).children().eq(2).find('a').contains(menuLinkLabel).should('be.visible').click()
         cy.url().should('contain', pageUrl)
         cy.get(sectionTitleLevel).should('contain', pageTile)
     }
 
-    checkTitleAndSubtitleInsideContentCard(contentTitle: string, contentSubtitle:string, contentText1: string, contentText2: string){
-        cy.get(footerElements.contentTitle()).should('contain', contentTitle).and('be.visible')
+    checkAllTextInsideContentCard(contentTitleTag?:string, contentTitle?: string, contentSubtitle?: string, secondTextContent?: string , thirdTextContent?: string){
+        cy.get(contentTitleTag).should('contain', contentTitle).and('be.visible')
         cy.get(footerElements.contentSubtitle()).should('contain', contentSubtitle).and('be.visible')
-        cy.get(footerElements.contentText1()).should('contain', contentText1)
-        cy.get(footerElements.contentText2()).should('contain', contentText2)
+        cy.get(footerElements.secondTextContent()).should('contain', secondTextContent).and('be.visible')
+        cy.get(footerElements.thirdTextContent()).should('contain', thirdTextContent).and('be.visible')
+    }
+
+    checkAllTextInsideContentCardWithManyElements(contentTitleTag?:string, contentTitle?: string, contentSubtitle?: string, firstTextContent?: string, secondTextContent?: string , thirdTextContent?: string, fourthTextContent?: string, fifthTextContent?: string, sixthTextContent?: string){
+        this.checkAllTextInsideContentCard(contentTitleTag, contentTitle, contentSubtitle, secondTextContent, thirdTextContent)
+        cy.get(footerElements.firstTextContent()).should('contain', firstTextContent)
+        cy.get(footerElements.fourthTextContent()).should('contain', fourthTextContent)
+        cy.get(footerElements.fifthTextContent()).should('contain', fifthTextContent)
+        cy.get(footerElements.sixthTextContent()).should('contain', sixthTextContent)
     }
 
     checkRedirectLinksWithinLegalNoticeText(){

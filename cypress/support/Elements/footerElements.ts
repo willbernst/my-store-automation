@@ -7,10 +7,14 @@ class footerElements{
     inconvenienceInformationText = () => {return 'h4'}
     requestToSearchAgain = () => {return '#content > p'}
     inputToSearchProducts = () => {return 'input[type="text"]'}
-    contentTitle = () => {return '#content > h2'}
     contentSubtitle = () => {return '#content > h3'}
-    contentText1 = () => {return '#content > :nth-child(3)'}
-    contentText2 = () => {return '#content > :nth-child(4)'}
+
+    firstTextContent = () => {return '#content > :nth-child(2)'}
+    secondTextContent = () => {return '#content > :nth-child(3)'}
+    thirdTextContent = () => {return '#content > :nth-child(4)'}
+    fourthTextContent = () => {return '#content > :nth-child(5)'}
+    fifthTextContent = () => {return '#content > :nth-child(6)'}
+    sixthTextContent = () => {return '#content > :nth-child(7)'}
 
     productsColumn = () => {return '.col-md-6.links > .row > :nth-child(1)'}
     pricesDropUrl = () => {return '/prices-drop'}
