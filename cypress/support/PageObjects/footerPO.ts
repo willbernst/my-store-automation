@@ -72,13 +72,8 @@ class footerPO{
     checkTitleAndSubtitleInsideContentCard(contentTitle: string, contentSubtitle:string, contentText1: string, contentText2: string){
         cy.get(footerElements.contentTitle()).should('contain', contentTitle).and('be.visible')
         cy.get(footerElements.contentSubtitle()).should('contain', contentSubtitle).and('be.visible')
-    }
-
-    checkTextInsideContentCard(firstParagraph, secondParagraph){
-        cy.fixture("our-company-contentText").then((contentText) =>{
-            cy.get(footerElements.contentText1()).should('contain', firstParagraph)
-            cy.get(footerElements.contentText2()).should('contain', secondParagraph)
-        })
+        cy.get(footerElements.contentText1()).should('contain', contentText1)
+        cy.get(footerElements.contentText2()).should('contain', contentText2)
     }
 
     checkRedirectLinksWithinLegalNoticeText(){
