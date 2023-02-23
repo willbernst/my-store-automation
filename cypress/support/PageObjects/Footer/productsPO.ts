@@ -1,6 +1,20 @@
-import productsElements from "../Elements/productsElements"
+import productsElements from "../../Elements/productsElements"
+import footerElements from "../../Elements/footerElements"
 
 class productsPO{
+    checkProductsOnThePage(quantityOfProductsText: string, productsInTheListing: string, quantityOfProducts: number){
+        cy.get(productsElements.productsCard()).should('be.visible')
+        cy.get(productsElements.productsCard()).children().should('have.length', quantityOfProducts)
+        cy.get(productsElements.totalProductsLabel()).should('have.text', quantityOfProductsText)
+        cy.get(productsElements.labelOfHowManyProductsAreBeingShown()).should('contain.text', productsInTheListing)
+    }
+
+    checkScreenIfThereAreNoProductsToBeShown(inconvenienceText: string, requestToSearchAgainText: string, placeHolderText: string){
+        cy.get(footerElements.inconvenienceInformationText()).should('contain.text', inconvenienceText).and('be.visible')
+        cy.get(footerElements.requestToSearchAgain()).should('contain.text', requestToSearchAgainText).and('be.visible')
+        cy.get(footerElements.inputToSearchProducts()).eq(1).should('have.attr', 'placeholder', placeHolderText)
+    }
+
     validateDiscountFlag(discountFlag:string){
         cy.get(productsElements.productsCard()).children().find(productsElements.productFlagDiscount()).then(($el) => {
                 expect($el).to.contain.text(discountFlag)

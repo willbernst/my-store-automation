@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-import productsPO from "../../support/PageObjects/productsPO";
+import productsPO from "../../support/PageObjects/footer/productsPO";
 
 const blockCategoryText: string = 'Discover our favorites fashionable discoveries, a selection of cool items to integrate in your wardrobe. Compose a unique style with personality which matches your own.'
 

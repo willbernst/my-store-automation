@@ -1,7 +1,6 @@
 /// <reference types="cypress"/>
 
-import footerPO from "../../../support/PageObjects/footerPO";
-import productsPO from "../../../support/PageObjects/productsPO";
+import footerPO from "../../../support/PageObjects/Footer/footerPO";
 
 describe('Footer test suit ', () => {
     it('Validate footer components', () => {
