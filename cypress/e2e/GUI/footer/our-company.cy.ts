@@ -6,6 +6,7 @@ import ourCompanyContentText from "../../../fixtures/our-company-contentText.jso
 import legalNoticeContentText from "../../../fixtures/legal-notice-contentText.json"
 import termsAndConditionsOfUseContentText from '../../../fixtures/terms-and-conditions-os-use-contentText.json'
 import ourCompanyPO from "../../../support/PageObjects/Footer/our-companyPO"
+import productsPO from '../../../support/PageObjects/Footer/productsPO'
 
 
 describe('Test suite in the our company column at the footer', () => {
@@ -47,9 +48,18 @@ describe('Test suite in the our company column at the footer', () => {
     });
 
     describe('Test suite in the Sitemap link at the footer', () => {
-        it.only('Validate access and components to the Sitemap screen through footer', () => {
+        it('Validate access and components to the Sitemap screen through footer', () => {
             cy.visit('/')
             footerPO.clickOnTheDesiredLinkInsideTheFooter(footerElements.ourCompanyColumn(), 'Sitemap', '/sitemap', 'span', 'Sitemap')
+            ourCompanyPO.validateSitemapScreen('Our Offers', 'Categories', 'Your account', 'Pages')
+        });
+
+        describe('Accessing the links on the Our Offers screen', () => {
+            it.only('Accessing and validating the new products screen', () => {
+                cy.visit('/sitemap')
+                ourCompanyPO.accessNewProductsPageThroughPagesScreen('New products')
+                productsPO.checkScreenIfThereAreNoProductsToBeShown('Sorry for the inconvenience.', 'Search again what you are looking for', 'Search our catalog')
+            });
         });
     });
 });

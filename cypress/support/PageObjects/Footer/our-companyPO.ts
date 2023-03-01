@@ -23,8 +23,8 @@ interface IOurCompany{
     validateTheDeliveryScreen(params: allContentComponents):void
     validateTheLegalNoticeScreen(params: allContentComponents):void
     validateTermsAndConditionsScreen(params: allContentComponents):void
-
     validateSecurePaymentScreen(params: allContentComponents):void
+    validateSitemapScreen(params: siteMapContentComponents):void
 }
 
 class ourCompanyPO implements IOurCompany{
@@ -58,8 +58,27 @@ class ourCompanyPO implements IOurCompany{
         cy.get(footerElements.fourthTextContent()).should('contain', fourthTextContent).and('be.visible')
     }
 
-    validateSitemapScreen(){
+    validateSitemapScreen(ourOffersColumnTitle?, categoriesColumnTitle?, yourAccountColumnTitle?, pagesTitle?){
+        cy.get(footerElements.sitemapOurOffersTitle()).should('contain.text', ourOffersColumnTitle)
+        cy.get(footerElements.sitemapOurOffersColumn()).children().should('have.length.at.least', 3)
+        cy.get(footerElements.sitemapCategoriesTitle()).should('contain.text', categoriesColumnTitle)
+        cy.get(footerElements.sitemapCategoriesColumn()).children().as('categoriesColumnLinks')
 
+        cy.get('@categoriesColumnLinks').eq(0).should('have.length.at.least', 1)
+        cy.get('@categoriesColumnLinks').eq(1).children().should('have.length.at.least', 3)
+        cy.get('@categoriesColumnLinks').eq(1).children().eq(0).children().should('have.length.at.least', 2)
+        cy.get('@categoriesColumnLinks').eq(1).children().eq(0).children().eq(1).children().should('have.length.at.least', 2)
+        cy.get('@categoriesColumnLinks').eq(1).children().eq(1).children().eq(0).should('have.length.at.least', 1)
+        cy.get('@categoriesColumnLinks').eq(1).children().eq(1).children().eq(1).children().should('have.length.at.least', 2)
+
+        cy.get(footerElements.sitemapYourAccountTitle()).should('contain.text', yourAccountColumnTitle)
+        cy.get(footerElements.sitemapYourAccountColumn()).children().should('have.length.at.least', 2)
+        cy.get(footerElements.sitemapPagesTitle()).should('contain.text', pagesTitle)
+        cy.get(footerElements.sitemapPagesColumn()).children().should('have.length.at.least', 8)
+    }
+    
+    accessNewProductsPageThroughPagesScreen(newProductsLabel){
+        cy.get(footerElements.newProductPageLink()).should('contain.text', newProductsLabel)
     }
 
     checkRedirectLinksWithinLegalNoticeText(){
