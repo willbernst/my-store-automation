@@ -1,14 +1,4 @@
 class footerElements{
-    newsletterLabel = () => {return '#block-newsletter-label'}
-    emailInputNewsletterSubscribe = () => {return '.input-wrapper > input'} 
-    subscribeNewsletterButton = () => {return '.hidden-xs-down'}
-    newsletterUnsubscribeInform = () => {return 'form > .row > :nth-child(2) > p'}
-    footerContainer = () => {return '.footer-container'}
-    inconvenienceInformationText = () => {return 'h4'}
-    requestToSearchAgain = () => {return '#content > p'}
-    inputToSearchProducts = () => {return 'input[type="text"]'}
-    contentSubtitle = () => {return 'h3'}
-
     firstTextContent = () => {return '#content > :nth-child(2)'}
     secondTextContent = () => {return '#content > :nth-child(3)'}
     thirdTextContent = () => {return '#content > :nth-child(4)'}
@@ -34,6 +24,8 @@ class footerElements{
     sitemapYourAccountColumn = () => {return ':nth-child(3) > ul'}
     sitemapPagesTitle = () => {return ':nth-child(4) > h2'}
     sitemapPagesColumn = () => {return ':nth-child(4) > ul'}
+
+    sitemapBrandsContainer = () => {return '#wrapper > .container'}
     
     newProductPageLink = () => {return '#new-product-page'}
     brandsPageLink = () => {return '#manufacturer-page'}

@@ -76,9 +76,14 @@ class ourCompanyPO implements IOurCompany{
         cy.get(footerElements.sitemapPagesTitle()).should('contain.text', pagesTitle)
         cy.get(footerElements.sitemapPagesColumn()).children().should('have.length.at.least', 8)
     }
+
+    validateBrandsScreen(homeText, brandsText){
+        cy.get(footerElements.sitemapBrandsContainer()).find('ol').should('contain', homeText).and('contain', brandsText)
+    }
     
-    accessNewProductsPageThroughPagesScreen(newProductsLabel){
-        cy.get(footerElements.newProductPageLink()).should('contain.text', newProductsLabel)
+    accessAnyLinkInOurOfffersColumn(index, labelText, url){
+        cy.get(footerElements.sitemapOurOffersColumn()).children().eq(index).find('a').contains(labelText).click()
+        cy.url().should('contain', url)
     }
 
     checkRedirectLinksWithinLegalNoticeText(){

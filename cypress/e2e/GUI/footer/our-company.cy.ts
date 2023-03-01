@@ -55,10 +55,16 @@ describe('Test suite in the our company column at the footer', () => {
         });
 
         describe('Accessing the links on the Our Offers screen', () => {
-            it.only('Accessing and validating the new products screen', () => {
+            it('Accessing and validating the new products screen', () => {
                 cy.visit('/sitemap')
-                ourCompanyPO.accessNewProductsPageThroughPagesScreen('New products')
+                ourCompanyPO.accessAnyLinkInOurOfffersColumn(0, 'New products', '/new-products')
                 productsPO.checkScreenIfThereAreNoProductsToBeShown('Sorry for the inconvenience.', 'Search again what you are looking for', 'Search our catalog')
+            });
+
+            it.only('Accessing and validating the Brands screen', () => {
+                 cy.visit('/sitemap')
+                 ourCompanyPO.accessAnyLinkInOurOfffersColumn(1, 'Brands', '/brands')
+                 ourCompanyPO.validateBrandsScreen('Home', 'Brands')
             });
         });
     });
