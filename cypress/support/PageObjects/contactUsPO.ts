@@ -1,7 +1,7 @@
 import contactUsElements from "../Elements/contactUsElements";
 
 class contactUsPO {
-        checkUrlContactUsPage() {
+        validateUrlContactUsPage() {
             cy.url().should('contain', contactUsElements.contactUsPageUrl())
         }
 
@@ -9,7 +9,7 @@ class contactUsPO {
             cy.get(contactUsElements.contactUsHeaderLink()).click()
         }
 
-        checkAddressOnTheStoreInformationBlock(address: string, country: string){
+        validateAddressOnTheStoreInformationBlock(address: string, country: string){
             cy.get(contactUsElements.storeInformations())
                 .find(contactUsElements.storeInfosBlock())
                 .find(contactUsElements.storeInfosData())
@@ -18,7 +18,7 @@ class contactUsPO {
                 .and('contain', country)
         }
 
-        checkEmailOnTheStoreInformationBlock(emailUsLabel: string) {
+        validateEmailOnTheStoreInformationBlock(emailUsLabel: string) {
             cy.get(contactUsElements.storeInformations())
                 .find(contactUsElements.storeInfosBlock())
                 .find(contactUsElements.storeInfosData())
@@ -30,18 +30,18 @@ class contactUsPO {
                 .should('be.visible')
         }
 
-        checkContactUsForm(){
+        validateContactUsForm(){
             cy.get(contactUsElements.contactUsForm())
                 .should('be.visible')
         }
 
-        checkContactUsTitlePage(contactUsTitle: string){
+        validateContactUsTitlePage(contactUsTitle: string){
             cy.get(contactUsElements.contactUsTitlePage())
                 .should('be.visible')
                 .and('have.text', contactUsTitle)
         }
 
-        checkDefaultValueOfSubjectField(){
+        validateDefaultValueOfSubjectField(){
             cy.get(contactUsElements.contactSubject()).find('option[value=2]').should('be.selected')
         }
 
@@ -53,7 +53,7 @@ class contactUsPO {
             cy.get(contactUsElements.contactEmail()).type(email)
         }
 
-        checkDefaultValueOfEmailField(){
+        validateDefaultValueOfEmailField(){
             cy.get(contactUsElements.contactEmail()).should('have.attr', 'placeholder', 'your@email.com').and('be.empty')
         }
 
@@ -71,11 +71,11 @@ class contactUsPO {
             cy.get(contactUsElements.contactAttachment()).selectFile(file)
         }
 
-        checkDefaultValueAttachment(){
+        validateDefaultValueAttachment(){
             cy.get(contactUsElements.contactAttachmentTitle()).eq(1).should('be.empty')
         }
 
-        checkAttachmentTitle(fixtureName: String){
+        validateAttachmentTitle(fixtureName: String){
             cy.get(contactUsElements.contactAttachmentTitle()).eq(1).invoke('val').should('contain', fixtureName)
         }
 
@@ -83,7 +83,7 @@ class contactUsPO {
             cy.get(contactUsElements.contactMessage()).type(message)
         }
 
-        checkDefaultValueMessageInput(){
+        validateDefaultValueMessageInput(){
             cy.get(contactUsElements.contactMessage()).should('have.attr', 'placeholder', 'How can we help?').and('be.empty')
         }
 
@@ -95,11 +95,11 @@ class contactUsPO {
             cy.get(contactUsElements.submitFormContact()).click()
         }
 
-        checkSuccessMessage(successMessage) {
+        validateSuccessMessage(successMessage) {
             cy.get(contactUsElements.successMessage()).should('contain', successMessage).and('be.visible')
         }
         
-        checkErrorMessageDeliveredByFillingOutTheForm(errorMessage){
+        validateErrorMessageDeliveredByFillingOutTheForm(errorMessage){
             cy.get(contactUsElements.errorMessageWhenFillingOutTheForm()).should('contain', errorMessage).and('be.visible')
         }
 

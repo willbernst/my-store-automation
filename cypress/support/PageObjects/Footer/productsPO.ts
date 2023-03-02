@@ -1,47 +1,48 @@
-import productsElements from "../../Elements/productsElements"
-import footerElements from "../../Elements/footerElements"
+import productsElements from "../../Elements/Footer/productsElements"
+import footerElements from "../../Elements/Footer/footerElements"
+import clothesElements from "../../Elements/clothesElements"
 
 class productsPO{
-    checkProductsOnThePage(quantityOfProductsText: string, productsInTheListing: string, quantityOfProducts: number){
-        cy.get(productsElements.productsCard()).should('be.visible')
-        cy.get(productsElements.productsCard()).children().should('have.length', quantityOfProducts)
-        cy.get(productsElements.totalProductsLabel()).should('have.text', quantityOfProductsText)
-        cy.get(productsElements.labelOfHowManyProductsAreBeingShown()).should('contain.text', productsInTheListing)
+    validateProductsOnThePage(quantityOfProductsText: string, productsInTheListing: string, quantityOfProducts: number){
+        cy.get(clothesElements.productsCard()).should('be.visible')
+        cy.get(clothesElements.productsCard()).children().should('have.length', quantityOfProducts)
+        cy.get(clothesElements.totalProductsLabel()).should('have.text', quantityOfProductsText)
+        cy.get(clothesElements.labelOfHowManyProductsAreBeingShown()).should('contain.text', productsInTheListing)
     }
 
-    checkScreenIfThereAreNoProductsToBeShown(inconvenienceText: string, requestToSearchAgainText: string, placeHolderText: string){
+    validateScreenIfThereAreNoProductsToBeShown(inconvenienceText: string, requestToSearchAgainText: string, placeHolderText: string){
         cy.get(footerElements.inconvenienceInformationText()).should('contain.text', inconvenienceText).and('be.visible')
         cy.get(footerElements.requestToSearchAgain()).should('contain.text', requestToSearchAgainText).and('be.visible')
         cy.get(footerElements.inputToSearchProducts()).eq(1).should('have.attr', 'placeholder', placeHolderText)
     }
 
     validateDiscountFlag(discountFlag:string){
-        cy.get(productsElements.productsCard()).children().find(productsElements.productFlagDiscount()).then(($el) => {
+        cy.get(clothesElements.productsCard()).children().find(clothesElements.productFlagDiscount()).then(($el) => {
                 expect($el).to.contain.text(discountFlag)
         })
     }
 
     validateProductPrice(price1:string, price2:string){
-        cy.get(productsElements.productsCard()).children().find(productsElements.regularPrice()).then(($el) =>{
+        cy.get(clothesElements.productsCard()).children().find(clothesElements.regularPrice()).then(($el) =>{
                 expect($el).to.contain.text(price1)
                 expect($el).to.contain.text(price2)
         })
     }
 
     validateTheDiscountedPrice(price1:string, price2:string){
-        cy.get(productsElements.productsCard()).children().find(productsElements.discountedPrice()).then(($el) => {
+        cy.get(clothesElements.productsCard()).children().find(clothesElements.discountedPrice()).then(($el) => {
                 expect($el).to.contain.text(price1)
                 expect($el).to.contain.text(price2)
         })
     }
 
     accessClothesPage(){
-        cy.get(productsElements.clothesAccessLink()).click({force:true})
-        cy.url().should('contain', productsElements.clothesUrlPage())
+        cy.get(clothesElements.clothesAccessLink()).click({force:true})
+        cy.url().should('contain', clothesElements.clothesUrlPage())
     }
 
-    checkBlockCategory(text:string){
-        cy.get(productsElements.blockCategory()).should('be.visible').then(($el) => {
+    validateBlockCategory(text:string){
+        cy.get(clothesElements.blockCategory()).should('be.visible').then(($el) => {
                 expect($el).to.contain.html('h1')
                 expect($el).to.contain.html('span')
                 expect($el).to.contain.html('img')
@@ -50,9 +51,15 @@ class productsPO{
     }
 
     validateQuantityOfProductsOnThePage(quantityOfProducts: string, productsInTheListing: string){
-        cy.get(productsElements.totalProductsLabel()).should('have.text', quantityOfProducts)
-        cy.get(productsElements.labelOfHowManyProductsAreBeingShown()).should('contain.text', productsInTheListing)
+        cy.get(clothesElements.totalProductsLabel()).should('have.text', quantityOfProducts)
+        cy.get(clothesElements.labelOfHowManyProductsAreBeingShown()).should('contain.text', productsInTheListing)
     }
+
+    validateRedirectLinksWithinLegalNoticeText(){
+        cy.get('p > a').eq(0).should('have.attr', 'href', productsElements.prestaShopSoftwareLink())
+        cy.get('p > a').eq(1).should('have.attr', 'href', productsElements.prestaShopEcommerceLink())
+    }
+
 }
 
 export default new productsPO()

@@ -5,13 +5,13 @@ import signInPO from "../../support/PageObjects/signInPO";
 describe('Sign In page test suit', () => {
     it('Access sign in page and validate components', () => {
         signInPO.accessSignInPage()
-        signInPO.checkSignInPageContent()
-        signInPO.checkSignInPageTitle('Log in to your account')
-        signInPO.checkLabelAndInputEmail()
-        signInPO.checkLabelAndInputPassword('Password', 'Show')
-        signInPO.checkForgotYourPasswordLink('Forgot your password?')
-        signInPO.checkCreateAccountLink('No account? Create one here')
-        signInPO.checkSignInButton('Sign in')
+        signInPO.validateSignInPageContent()
+        signInPO.validateSignInPageTitle('Log in to your account')
+        signInPO.validateLabelAndInputEmail()
+        signInPO.validateLabelAndInputPassword('Password', 'Show')
+        signInPO.validateForgotYourPasswordLink('Forgot your password?')
+        signInPO.validateCreateAccountLink('No account? Create one here')
+        signInPO.validateSignInButton('Sign in')
         
         cy.percySnapshot()
     });

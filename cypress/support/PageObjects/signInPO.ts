@@ -9,34 +9,34 @@ class SignInPagePO {
         cy.visit(signElements.singInUrl())
     }
 
-    checkSignInPageContent(){
+    validateSignInPageContent(){
         cy.get(signElements.signInPageContent()).should('exist').and('be.visible')
     }
 
-    checkSignInPageTitle(singInPageTitle:string){
+    validateSignInPageTitle(singInPageTitle:string){
         cy.get(signElements.signInPageTitle()).should('be.visible').and('contain', singInPageTitle)
     }
 
-    checkLabelAndInputEmail(){
+    validateLabelAndInputEmail(){
         cy.get(signElements.labelEmail()).should('contain', 'Email').and('be.visible')
         cy.get(signElements.inputEmail()).should('be.empty')
     }
 
-    checkLabelAndInputPassword(passwordLabel:string, buttonLabel:string){
+    validateLabelAndInputPassword(passwordLabel:string, buttonLabel:string){
         cy.get(signElements.labelPassword()).should('be.visible').and('contain', passwordLabel)
         cy.get(signElements.inputPassword()).should('be.empty')
         cy.get(signElements.showPasswordButton()).should('be.visible').and('contain.text', buttonLabel)
     }
 
-    checkForgotYourPasswordLink(forgotYourPasswordLabel:string){
+    validateForgotYourPasswordLink(forgotYourPasswordLabel:string){
         cy.get(signElements.forgotPasswordLink()).should('be.visible').and('contain.text', forgotYourPasswordLabel)
     }
 
-    checkSignInButton(signInLabelButton:string){
+    validateSignInButton(signInLabelButton:string){
         cy.get(signElements.submitButton()).should('be.visible').and('contain.text', signInLabelButton)
     }
 
-    checkCreateAccountLink(createAccountLabel){
+    validateCreateAccountLink(createAccountLabel){
         cy.get(signElements.createAccountLink()).should('be.visible').and('contain.text', createAccountLabel)
     }
 

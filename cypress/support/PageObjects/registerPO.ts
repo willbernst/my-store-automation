@@ -9,7 +9,7 @@ class registerPagePO {
         cy.visit(Cypress.config().baseUrl + registerElements.registerPageUrl())
     }
 
-    checkForm(){
+    validateForm(){
         cy.get(registerElements.registrationForm()).should('be.visible')
     }
 

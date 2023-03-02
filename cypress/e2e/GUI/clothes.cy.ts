@@ -8,7 +8,7 @@ describe('Clothes page test suite', () => {
     it('Access Clothes page and validate the information on the screen', () => {
         cy.visit('/')
         productsPO.accessClothesPage()
-        productsPO.checkBlockCategory(blockCategoryText)
+        productsPO.validateBlockCategory(blockCategoryText)
         productsPO.validateDiscountFlag('-20%')
         productsPO.validateProductPrice('$23.90', '$35.90')
         productsPO.validateTheDiscountedPrice('$19.12', '28.72')

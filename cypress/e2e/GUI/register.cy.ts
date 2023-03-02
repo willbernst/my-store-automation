@@ -47,7 +47,7 @@ describe('Register page test suit', () => {
 
     it('Registration done successfully', () => {
         registerPO.accessRegistrationPage()
-        registerPO.checkForm()
+        registerPO.validateForm()
         registerPO.typeFirstName(randomUserData.firstname)
         registerPO.typeLastName(randomUserData.lastname)
         registerPO.typeEmail(randomUserData.email)

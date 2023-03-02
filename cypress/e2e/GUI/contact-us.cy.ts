@@ -12,48 +12,47 @@ describe('Contact us page test suite', () => {
     it('Access contact us page and validate components', () => {
         cy.visit('/')
         contactUsPO.clickOnContactUsHeaderLink()
-        contactUsPO.checkUrlContactUsPage()
+        contactUsPO.validateUrlContactUsPage()
         cy.percySnapshot()
-        contactUsPO.checkAddressOnTheStoreInformationBlock('Loja de Teste', 'United States')
-        contactUsPO.checkEmailOnTheStoreInformationBlock('Email us')
-        contactUsPO.checkContactUsForm()
-        contactUsPO.checkContactUsTitlePage('Contact us')
-        contactUsPO.checkDefaultValueOfSubjectField()
-        contactUsPO.checkDefaultValueOfEmailField()
-        contactUsPO.checkDefaultValueAttachment()
-        contactUsPO.checkDefaultValueMessageInput()
+        contactUsPO.validateAddressOnTheStoreInformationBlock('Loja de Teste', 'United States')
+        contactUsPO.validateEmailOnTheStoreInformationBlock('Email us')
+        contactUsPO.validateContactUsForm()
+        contactUsPO.validateContactUsTitlePage('Contact us')
+        contactUsPO.validateDefaultValueOfSubjectField()
+        contactUsPO.validateDefaultValueOfEmailField()
+        contactUsPO.validateDefaultValueAttachment()
+        contactUsPO.validateDefaultValueMessageInput()
 
     });
     it('Message sent successfully without being a logged in user', () => {
         cy.visit('/')
         contactUsPO.clickOnContactUsHeaderLink()
-        contactUsPO.checkUrlContactUsPage()
+        contactUsPO.validateUrlContactUsPage()
         contactUsPO.chooseASubjectForTheContact('Webmaster')
         contactUsPO.typeContactEmail(randomEmailAndMessage.email)
         contactUsPO.insertAccessoryFile('cypress/fixtures/docContactUsFixture.pdf')
-        contactUsPO.checkAttachmentTitle('docContactUsFixture')
+        contactUsPO.validateAttachmentTitle('docContactUsFixture')
         contactUsPO.typeAMessage(randomEmailAndMessage.message)
         contactUsPO.clickOnSubmitButton()
-        contactUsPO.checkSuccessMessage('Your message has been successfully sent to our team')
+        contactUsPO.validateSuccessMessage('Your message has been successfully sent to our team')
         cy.percySnapshot()
     });
 
     it('Message sent successfully being a logged in user', () => {
         cy.loginViaGUI()
         contactUsPO.clickOnContactUsHeaderLink()
-        contactUsPO.checkUrlContactUsPage()
-        contactUsPO.checkUrlContactUsPage()
+        contactUsPO.validateUrlContactUsPage()
 
         cy.percySnapshot()
 
-        contactUsPO.checkContactUsForm()
-        contactUsPO.checkContactUsTitlePage('Contact us')
+        contactUsPO.validateContactUsForm()
+        contactUsPO.validateContactUsTitlePage('Contact us')
         contactUsPO.validatePreviouslyFilledEmailWhenUserLoggedIn()
         contactUsPO.insertAccessoryFile('cypress/fixtures/docContactUsFixture.pdf')
-        contactUsPO.checkAttachmentTitle('docContactUsFixture')
+        contactUsPO.validateAttachmentTitle('docContactUsFixture')
         contactUsPO.typeAMessage(randomEmailAndMessage.message)
         contactUsPO.clickOnSubmitButton()
-        contactUsPO.checkSuccessMessage('Your message has been successfully sent to our team')
+        contactUsPO.validateSuccessMessage('Your message has been successfully sent to our team')
 
         cy.percySnapshot()
     });
@@ -61,15 +60,13 @@ describe('Contact us page test suite', () => {
     it('Message not sent due to invalid email', () => {
         cy.visit('/')
         contactUsPO.clickOnContactUsHeaderLink()
-        contactUsPO.clickOnContactUsHeaderLink()
-        contactUsPO.checkUrlContactUsPage()
-        contactUsPO.checkUrlContactUsPage()
+        contactUsPO.validateUrlContactUsPage()
         
         cy.percySnapshot()
 
         contactUsPO.doNotFillInTheEmailInput()
         contactUsPO.clickOnSubmitButton()
-        contactUsPO.checkErrorMessageDeliveredByFillingOutTheForm('Invalid email address.')
+        contactUsPO.validateErrorMessageDeliveredByFillingOutTheForm('Invalid email address.')
 
         cy.percySnapshot()  
     });
@@ -77,16 +74,14 @@ describe('Contact us page test suite', () => {
     it('Message not sent due to blank message field', () => {
         cy.visit('/')
         contactUsPO.clickOnContactUsHeaderLink()
-        contactUsPO.clickOnContactUsHeaderLink()
-        contactUsPO.checkUrlContactUsPage()
-        contactUsPO.checkUrlContactUsPage()
+        contactUsPO.validateUrlContactUsPage()
 
         cy.percySnapshot()
 
         contactUsPO.typeContactEmail(randomEmailAndMessage.email)
         contactUsPO.doNotFillInTheMessageInput()
         contactUsPO.clickOnSubmitButton()
-        contactUsPO.checkErrorMessageDeliveredByFillingOutTheForm('The message cannot be blank.')
+        contactUsPO.validateErrorMessageDeliveredByFillingOutTheForm('The message cannot be blank.')
 
         cy.percySnapshot()
     });
