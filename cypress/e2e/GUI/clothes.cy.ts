@@ -14,6 +14,6 @@ describe('Clothes page test suite', () => {
         productsPO.validateTheDiscountedPrice('$19.12', '28.72')
         productsPO.validateQuantityOfProductsOnThePage('There are 2 products.', 'Showing 1-2 of 2 item(s)')
         
-        cy.percySnapshot()
+        cy.percySnapshot('Access Clothes page and validate the information on the screen')
     });
 });

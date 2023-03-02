@@ -16,6 +16,6 @@ describe('Footer test suit ', () => {
         yourAccountPO.validateYourAccountColumn()
         footerPO.validateStoreInformationColumn('Store information', 'admin@marcelodebittencourt.com')
 
-        cy.percySnapshot()
+        cy.percySnapshot('Validating all visual components of footer')
     });
 });

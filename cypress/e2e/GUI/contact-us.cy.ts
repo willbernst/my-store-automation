@@ -22,6 +22,7 @@ describe('Contact us page test suite', () => {
         contactUsPO.validateDefaultValueOfEmailField()
         contactUsPO.validateDefaultValueAttachment()
         contactUsPO.validateDefaultValueMessageInput()
+        cy.percySnapshot('Access contact us page and validate components')
 
     });
     it('Message sent successfully without being a logged in user', () => {
@@ -35,7 +36,7 @@ describe('Contact us page test suite', () => {
         contactUsPO.typeAMessage(randomEmailAndMessage.message)
         contactUsPO.clickOnSubmitButton()
         contactUsPO.validateSuccessMessage('Your message has been successfully sent to our team')
-        cy.percySnapshot()
+        cy.percySnapshot('Message sent successfully without being a logged in user')
     });
 
     it('Message sent successfully being a logged in user', () => {
@@ -54,7 +55,7 @@ describe('Contact us page test suite', () => {
         contactUsPO.clickOnSubmitButton()
         contactUsPO.validateSuccessMessage('Your message has been successfully sent to our team')
 
-        cy.percySnapshot()
+        cy.percySnapshot('Message sent successfully being a logged in user')
     });
 
     it('Message not sent due to invalid email', () => {
@@ -68,7 +69,7 @@ describe('Contact us page test suite', () => {
         contactUsPO.clickOnSubmitButton()
         contactUsPO.validateErrorMessageDeliveredByFillingOutTheForm('Invalid email address.')
 
-        cy.percySnapshot()  
+        cy.percySnapshot('Message not sent due to invalid email')  
     });
 
     it('Message not sent due to blank message field', () => {
@@ -83,6 +84,6 @@ describe('Contact us page test suite', () => {
         contactUsPO.clickOnSubmitButton()
         contactUsPO.validateErrorMessageDeliveredByFillingOutTheForm('The message cannot be blank.')
 
-        cy.percySnapshot()
+        cy.percySnapshot('Message not sent due to blank message field')
     });
 });

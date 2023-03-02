@@ -26,7 +26,7 @@ describe('Sign In page test suit', () => {
         cy.url().should('contain', '/my-account')
         signInPO.confirmLogin('William Dewes')
 
-        cy.percySnapshot()
+        cy.percySnapshot('Login Successfully')
     });
 
     it('Unsuccessful Login', () => {
@@ -39,6 +39,6 @@ describe('Sign In page test suit', () => {
         })
         signInPO.alert('Authentication failed')
 
-        cy.percySnapshot()
+        cy.percySnapshot('Unsuccessful Login')
     });
 });

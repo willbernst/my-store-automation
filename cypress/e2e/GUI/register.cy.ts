@@ -57,12 +57,12 @@ describe('Register page test suit', () => {
         registerPO.newsletterCheckbox()
         registerPO.termsPolicyCheckbox()
 
-        cy.percySnapshot()
+        cy.percySnapshot('Validating completion of fields ')
 
         registerPO.clickOnRegisterButton()
         cy.url().should('contain', Cypress.config().baseUrl)
 
-        cy.percySnapshot()
+        cy.percySnapshot('Registration done successfully')
     });
 
     it('Registration not made because the date of birth was filled in wrong', () => {
@@ -74,12 +74,12 @@ describe('Register page test suit', () => {
         registerPO.typeBirthDate(randomUserData.wrongBirthDate.month, randomUserData.wrongBirthDate.day, randomUserData.wrongBirthDate.year)
         registerPO.termsPolicyCheckbox()
 
-        cy.percySnapshot()
+        cy.percySnapshot('validating completion of fields, but having the date field filled in wrong')
 
         registerPO.clickOnRegisterButton()
         registerPO.catchWrongBirthDateAlert('Format should be 05/31/1970.')
 
-        cy.percySnapshot()
+        cy.percySnapshot('Registration not made because the date of birth was filled in wrong')
     });
 
     it('Unsuccessful registration because the email was nmot entered correctly, has invalid format', () => {
@@ -95,6 +95,6 @@ describe('Register page test suit', () => {
         registerPO.clickOnRegisterButton()
         registerPO.catchInvalidFormatEmailAlert('Invalid format.')
 
-        cy.percySnapshot()
+        cy.percySnapshot('validating filling in the fields, but having the email field filled in wrong')
     });
 });
