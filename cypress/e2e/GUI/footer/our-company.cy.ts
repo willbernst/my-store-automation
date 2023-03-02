@@ -72,7 +72,9 @@ describe('Test suite in the our company column at the footer', () => {
             it.only('Accessing and validating the Brands screen', () => {
                  cy.visit('/sitemap')
                  ourCompanyPO.accessAnyLinkInOurOfffersColumn(1, 'Brands', '/brands')
-                 ourCompanyPO.validateBrandsScreen('Home', 'Brands')
+                 ourCompanyPO.validateBrandsScreen('Home', 'Brands', 'Brands')
+
+
                  cy.percySnapshot('Accessing and validating the Brands screen')
             });
         });

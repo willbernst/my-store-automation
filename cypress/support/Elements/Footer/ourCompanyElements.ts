@@ -1,4 +1,5 @@
 class ourCompanyElements{
+    title = () => {return 'h1'}
     ourCompanyColumn = () => {return '.col-md-6.links > .row > :nth-child(2)'}
     sitemapOurOffersTitle = () => {return ':nth-child(1) > h2'}
     sitemapOurOffersColumn = () => {return '.container-fluid > .row > :nth-child(1) > :nth-child(2)'}
@@ -14,6 +15,12 @@ class ourCompanyElements{
     graficCornerPageLink = () => {return '#manufacturer-page-2'}
     studioDesignPageLink = () => {return '#manufacturer-page-1'}
     supplierPageLink = () => {return '#supplier-page'}
+
+    firstBrandCard = () => {return '#main > ul > :nth-child(1)'}
+    secondBrandCard = () => {return '#main > ul > :nth-child(2)'}
+    brandImg = () => {return 'brand-img'}
+    brandInfos = () => {return 'brand-infos'}
+    brandProducts = () => {return 'brand-products'}
 }
 
 export default new ourCompanyElements()

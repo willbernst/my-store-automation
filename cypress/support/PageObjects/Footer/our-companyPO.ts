@@ -20,12 +20,19 @@ interface siteMapContentComponents{
     pagesColumn?: string
 }
 
+interface brandsScreenContentComponents{
+    homeText?:string,
+    brandsText?: string,
+    brandsTtite?:string
+}
+
 interface IOurCompany{
     validateTheDeliveryScreen(params: allContentComponents):void
     validateTheLegalNoticeScreen(params: allContentComponents):void
     validateTermsAndConditionsScreen(params: allContentComponents):void
     validateSecurePaymentScreen(params: allContentComponents):void
     validateSitemapScreen(params: siteMapContentComponents):void
+    validateBrandsScreen(params: brandsScreenContentComponents):void
 }
 
 class ourCompanyPO implements IOurCompany{
@@ -78,8 +85,21 @@ class ourCompanyPO implements IOurCompany{
         cy.get(ourCompanyElements.sitemapPagesColumn()).children().should('have.length.at.least', 8)
     }
 
-    validateBrandsScreen(homeText, brandsText){
+    validateBrandsScreen(homeText?, brandsText?, brandsTitle?){
         cy.get(ourCompanyElements.sitemapBrandsContainer()).find('ol').should('contain', homeText).and('contain', brandsText)
+        cy.get(ourCompanyElements.title()).should('contain', brandsTitle)
+
+        cy.get(ourCompanyElements.firstBrandCard()).then(($el) =>{
+            cy.get($el).children().eq(0).should('have.class', ourCompanyElements.brandImg()).find('img').and('be.visible')
+            cy.get($el).children().eq(1).should('have.class', ourCompanyElements.brandInfos()).should('contain', 'Graphic Corner')
+            cy.get($el).children().eq(2).should('have.class', ourCompanyElements.brandProducts()).should('contain', '9 products').and('contain', 'View products')
+        })
+
+        cy.get(ourCompanyElements.secondBrandCard()).then(($el) =>{
+            cy.get($el).children().eq(0).should('have.class', ourCompanyElements.brandImg()).find('img').and('be.visible')
+            cy.get($el).children().eq(1).should('have.class', ourCompanyElements.brandInfos()).should('contain', 'Studio Design')
+            cy.get($el).children().eq(2).should('have.class', ourCompanyElements.brandProducts()).should('contain', '9 products').and('contain', 'View products')
+        })
     }
     
     accessAnyLinkInOurOfffersColumn(index, labelText, url){
