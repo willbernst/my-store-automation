@@ -1,0 +1,24 @@
+{
+    "title": "List of products by brand Graphic Corner",
+    "subtitle": "Since 2010, Graphic Corner offers a large choice of quality posters, available on paper and many other formats.",
+    "totalOfProductsLabel": "There are 9 products.",
+    "products": {
+        "names": [
+            "Brown Bear - Vector Graphics",
+            "Brown Bear Notebook",
+            "Hummingbird - Vector Graphics",
+            "Hummingbird Notebook",
+            "Mountain Fox - Vector Graphics Price",
+            "Mountain Fox Notebook",
+            "The Adventure Begins Framed...",
+            "The Best Is Yet To Come'...",
+            "Today Is A Good Day Framed..."
+        ],
+        "prices": [
+            "$9.00",
+            "$12.90",
+            "$29.90"
+        ]
+    },
+    "productsBeingShownLabel": "Showing 1-9 of 9 item(s)"
+}

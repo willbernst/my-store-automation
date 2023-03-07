@@ -1,53 +1,30 @@
 import footerElements from "../../Elements/Footer/footerElements"
 import ourCompanyElements from "../../Elements/Footer/ourCompanyElements"
 
-interface allContentComponents {
-    contentTitleTag?:string,
-    contentTitle?: string,
-    contentSubtitle?: string,
-    firstTextContent?: string,
-    secondTextContent?: string,
-    thirdTextContent?: string,
-    fourthTextContent?: string,
-    fifthTextContent?: string,
-    sixthTextContent?: string
-}
 
-interface siteMapContentComponents{
-    ourOffersColumn?: string,
-    categoriesColumn?: string,
-    yourAccountColumn?: string,
-    pagesColumn?: string
-}
+class ourCompanyPO{
+    validateOurCompanyColumn(){
+        cy.get(ourCompanyElements.ourCompanyColumn()).should('be.visible')
+        cy.get(ourCompanyElements.ourCompanyColumn()).children().eq(2).children().should('have.length', 8)
+    }
 
-interface brandsScreenContentComponents{
-    homeText?:string,
-    brandsText?: string,
-    brandsTtite?:string
-}
+    accessAnyLinkInOurOfffersColumn(index:number, labelText:string, url:string){
+        cy.get(ourCompanyElements.sitemapOurOffersColumn()).children().eq(index).find('a').contains(labelText).click()
+        cy.url().should('contain', url)
+    }
 
-interface IOurCompany{
-    validateTheDeliveryScreen(params: allContentComponents):void
-    validateTheLegalNoticeScreen(params: allContentComponents):void
-    validateTermsAndConditionsScreen(params: allContentComponents):void
-    validateSecurePaymentScreen(params: allContentComponents):void
-    validateSitemapScreen(params: siteMapContentComponents):void
-    validateBrandsScreen(params: brandsScreenContentComponents):void
-}
-
-class ourCompanyPO implements IOurCompany{
-    validateTheDeliveryScreen(contentTitleTag?, contentTitle?, contentSubtitle?, secondTextContent?,thirdTextContent?){
+    validateTheDeliveryScreen(contentTitleTag?:string, contentTitle?:string, contentSubtitle?:string, secondTextContent?:string,thirdTextContent?:string){
         cy.get(contentTitleTag).should('contain', contentTitle).and('be.visible')
         cy.get(footerElements.contentSubtitle()).should('contain', contentSubtitle).and('be.visible')
         cy.get(footerElements.secondTextContent()).should('contain', secondTextContent).and('be.visible')
         cy.get(footerElements.thirdTextContent()).should('contain', thirdTextContent).and('be.visible')
     }
 
-    validateTheLegalNoticeScreen(contentTitleTag?, contentTitle?, contentSubtitle?, secondTextContent?,thirdTextContent?){
+    validateTheLegalNoticeScreen(contentTitleTag?:string, contentTitle?:string, contentSubtitle?:string, secondTextContent?:string,thirdTextContent?:string){
         this.validateTheDeliveryScreen(contentTitleTag, contentTitle, contentSubtitle, secondTextContent,thirdTextContent)
     }
 
-    validateTermsAndConditionsScreen(contentTitleTag?, contentTitle?, contentSubtitle?, firstTextContent?,secondTextContent?, thirdTextContent?,fourthTextContent?, fifthTextContent?, sixthTextContent? ){
+    validateTermsAndConditionsScreen(contentTitleTag?:string, contentTitle?:string, contentSubtitle?:string, firstTextContent?:string,secondTextContent?:string, thirdTextContent?:string,fourthTextContent?:string, fifthTextContent?:string, sixthTextContent?:string ){
         cy.get(contentTitleTag).should('contain', contentTitle).and('be.visible')
         cy.get(footerElements.contentSubtitle()).should('contain', contentSubtitle).and('be.visible')
         cy.get(footerElements.firstTextContent()).should('contain', firstTextContent).and('be.visible')
@@ -58,7 +35,7 @@ class ourCompanyPO implements IOurCompany{
         cy.get(footerElements.sixthTextContent()).should('contain', sixthTextContent).and('be.visible')
     }
 
-    validateSecurePaymentScreen(contentTitleTag?, contentTitle?, firstTextContent?, secondTextContent?, thirdTextContent?, fourthTextContent?){
+    validateSecurePaymentScreen(contentTitleTag?:string, contentTitle?:string, firstTextContent?:string, secondTextContent?:string, thirdTextContent?:string, fourthTextContent?:string){
         cy.get(contentTitleTag).should('contain', contentTitle).and('be.visible')
         cy.get(footerElements.firstTextContent()).should('contain', firstTextContent).and('be.visible')
         cy.get(footerElements.secondTextContent()).should('contain', secondTextContent).and('be.visible')
@@ -66,7 +43,7 @@ class ourCompanyPO implements IOurCompany{
         cy.get(footerElements.fourthTextContent()).should('contain', fourthTextContent).and('be.visible')
     }
 
-    validateSitemapScreen(ourOffersColumnTitle?, categoriesColumnTitle?, yourAccountColumnTitle?, pagesTitle?){
+    validateSitemapScreen(ourOffersColumnTitle?:string, categoriesColumnTitle?:string, yourAccountColumnTitle?:string, pagesTitle?:string){
         cy.get(ourCompanyElements.sitemapOurOffersTitle()).should('contain.text', ourOffersColumnTitle)
         cy.get(ourCompanyElements.sitemapOurOffersColumn()).children().should('have.length.at.least', 3)
         cy.get(ourCompanyElements.sitemapCategoriesTitle()).should('contain.text', categoriesColumnTitle)
@@ -85,7 +62,7 @@ class ourCompanyPO implements IOurCompany{
         cy.get(ourCompanyElements.sitemapPagesColumn()).children().should('have.length.at.least', 8)
     }
 
-    validateBrandsScreen(homeText?, brandsText?, brandsTitle?){
+    validateBrandsScreen(homeText?:string, brandsText?:string, brandsTitle?:string){
         cy.get(ourCompanyElements.sitemapBrandsContainer()).find('ol').should('contain', homeText).and('contain', brandsText)
         cy.get(ourCompanyElements.title()).should('contain', brandsTitle)
 
@@ -101,15 +78,21 @@ class ourCompanyPO implements IOurCompany{
             cy.get($el).children().eq(2).should('have.class', ourCompanyElements.brandProducts()).should('contain', '9 products').and('contain', 'View products')
         })
     }
-    
-    accessAnyLinkInOurOfffersColumn(index, labelText, url){
-        cy.get(ourCompanyElements.sitemapOurOffersColumn()).children().eq(index).find('a').contains(labelText).click()
+
+    accessAnyMenuFromTheBrandsScreen(selector?:string,index?:number, url?:string){
+        cy.get(selector).eq(index).click(+15, +5, {force:true})
         cy.url().should('contain', url)
     }
-    
-    validateOurCompanyColumn(){
-        cy.get(ourCompanyElements.ourCompanyColumn()).should('be.visible')
-        cy.get(ourCompanyElements.ourCompanyColumn()).children().eq(2).children().should('have.length', 8)
+
+    validateTheGraphicCornerScreen(){
+        cy.fixture('graphicCornerContentText.json').then((data) => {
+            cy.get(ourCompanyElements.title()).should('contain', data.title).and('be.visible')
+            cy.get(ourCompanyElements.subtitle()).should('contain', data.subtitle).and('be.visible')
+            cy.get(ourCompanyElements.totalProductsLabel()).should('contain', data.totalOfProductsLabel)
+            cy.get(ourCompanyElements.productsBeingShown()).should('contain', data.productsBeingShownLabel)
+        })
+
+        cy.iteratingOverAJSONObject()
     }
 }
 

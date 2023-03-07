@@ -6,6 +6,7 @@ declare global {
     namespace Cypress {
         interface Chainable {
             loginViaGUI(): Chainable<any>
+            iteratingOverAJSONObject(): Chainable<any>
         }
     }
 }

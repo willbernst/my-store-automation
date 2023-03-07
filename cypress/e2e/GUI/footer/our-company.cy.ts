@@ -1,10 +1,9 @@
 /// <reference types="cypress" />
 
 import footerPO from "../../../support/PageObjects/Footer/footerPO"
-import footerElements from "../../../support/Elements/Footer/footerElements"
-import ourCompanyContentText from "../../../fixtures/our-company-contentText.json"
-import legalNoticeContentText from "../../../fixtures/legal-notice-contentText.json"
-import termsAndConditionsOfUseContentText from '../../../fixtures/terms-and-conditions-os-use-contentText.json'
+import ourCompanyContentText from "../../../fixtures/ourCompanyContentText.json"
+import legalNoticeContentText from "../../../fixtures/legalNoticeContentText.json"
+import termsAndConditionsOfUseContentText from '../../../fixtures/termsAndConditionsOfUseContentText.json'
 import ourCompanyPO from "../../../support/PageObjects/Footer/our-companyPO"
 import productsPO from '../../../support/PageObjects/Footer/productsPO'
 import ourCompanyElements from "../../../support/Elements/Footer/ourCompanyElements"
@@ -69,13 +68,25 @@ describe('Test suite in the our company column at the footer', () => {
                 cy.percySnapshot('Accessing and validating the new products screen')
             });
 
-            it.only('Accessing and validating the Brands screen', () => {
-                 cy.visit('/sitemap')
-                 ourCompanyPO.accessAnyLinkInOurOfffersColumn(1, 'Brands', '/brands')
-                 ourCompanyPO.validateBrandsScreen('Home', 'Brands', 'Brands')
+            describe('Accessing the brands links through the sitemap screen', () => {
+                it('Accessing and validating the Brands screen', () => {
+                    cy.visit('/sitemap')
+                    ourCompanyPO.accessAnyLinkInOurOfffersColumn(1, 'Brands', '/brands')
+                    ourCompanyPO.validateBrandsScreen('Home', 'Brands', 'Brands')
+                    cy.percySnapshot('Accessing and validating the Brands screen')
+                });
 
+                it('Accessing the Graphic Corner screen through the brands screen', () => {
+                    cy.visit('/sitemap')
+                    ourCompanyPO.accessAnyLinkInOurOfffersColumn(1, 'Brands', '/brands')
+                    ourCompanyPO.accessAnyMenuFromTheBrandsScreen('.' + ourCompanyElements.brandsInfosLink(), 1, '/2-graphic-corner')
+                });
 
-                 cy.percySnapshot('Accessing and validating the Brands screen')
+                it.only('Accessing the graphic corner canvas through the sitemap and validating the canvas components', () => {
+                    cy.visit('/sitemap')
+                    ourCompanyPO.accessAnyLinkInOurOfffersColumn(1, 'Graphic Corner', '/2-graphic-corner')
+                    ourCompanyPO.validateTheGraphicCornerScreen()
+                });
             });
         });
     });

@@ -20,7 +20,15 @@ class ourCompanyElements{
     secondBrandCard = () => {return '#main > ul > :nth-child(2)'}
     brandImg = () => {return 'brand-img'}
     brandInfos = () => {return 'brand-infos'}
+    brandsInfosLink = () => {return 'brand-infos > p > a'}
     brandProducts = () => {return 'brand-products'}
+
+    subtitle = () => {return 'p > span'}
+    totalProductsLabel = () => {return '.total-products > p'}
+    products = () => {return '.products'}
+    productName = () => {return '.product-title'}
+    productPrice = () => {return '.price'}
+    productsBeingShown = () => {return '.pagination > .col-md-4'}
 }
 
 export default new ourCompanyElements()
