@@ -29,6 +29,25 @@ class ourCompanyElements{
     productName = () => {return '.product-title'}
     productPrice = () => {return '.price'}
     productsBeingShown = () => {return '.pagination > .col-md-4'}
+
+    productMiniature = () => {return '.product-miniature'}
+    priceInsideTheProductPage = () => {return '.current-price > span'}
+    productDescriptionInsideTheProductPage = () => {return '#product-description-short-17'}
+    paperTypeLabel = () => {return '.control-label'}
+    paperTypeSelect = () => {return '#group_4'}
+    quantityOfProductsLabel = () => {return '.product-add-to-cart > .control-label'}
+    quantityWanted = () => {return '#quantity_wanted'}
+    arrowToAddQuantity = () => {return '.bootstrap-touchspin-up > .material-icons'}
+    addToCartButton = () => {return '.add-to-cart'}
+    socialSharing = () => {return '.social-sharing > ul'}
+    blockReassurance = () => {return '#block-reassurance'}
+    productDescription = () => {return '#description'}
+    productDetails = () => {return '#product-details'}
+    productDetailsLink = () => {return ':nth-child(2) > .nav-link'}
+    productReference = () => {return '.product-reference > span'}
+    productQuantity = () => {return '.product-quantities > span'}
+    productComposition = () => {return '.data-sheet > :nth-child(2)'}
+    productProperty = () => {return '.data-sheet > :nth-child(4)'}
 }
 
 export default new ourCompanyElements()

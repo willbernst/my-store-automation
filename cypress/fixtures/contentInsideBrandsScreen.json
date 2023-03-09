@@ -1,0 +1,58 @@
+{
+    "brands": {
+        "graphicCorner": {
+            "title": "List of products by brand Graphic Corner",
+            "subtitle": "Since 2010, Graphic Corner offers a large choice of quality posters, available on paper and many other formats.",
+            "totalOfProductsLabel": "There are 9 products.",
+            "products": {
+                "names": [
+                    "Brown Bear - Vector Graphics",
+                    "Brown Bear Notebook",
+                    "Hummingbird - Vector Graphics",
+                    "Hummingbird Notebook",
+                    "Mountain Fox - Vector Graphics Price",
+                    "Mountain Fox Notebook",
+                    "The Adventure Begins Framed...",
+                    "The Best Is Yet To Come'...",
+                    "Today Is A Good Day Framed..."
+                ],
+                "prices": [
+                    "$9.00",
+                    "$12.90",
+                    "$29.90"
+                ],
+                "regularPrices":[]
+            },
+            "productsBeingShownLabel": "Showing 1-9 of 9 item(s)"
+        },
+        "studioDesign": {
+            "title": "List of products by brand Studio Design",
+            "subtitle": "Studio Design offers a range of items from ready-to-wear collections to contemporary objects. The brand has been presenting new ideas and trends since its creation in 2012.",
+            "totalOfProductsLabel": "There are 9 products.",
+            "products": {
+                "names": [
+                    "Brown Bear Cushion",
+                    "Customizable Mug",
+                    "Hummingbird Cushion",
+                    "Hummingbird Printed Sweater",
+                    "Hummingbird Printed T-Shirt",
+                    "Mountain Fox Cushion",
+                    "Mug The Adventure Begins",
+                    "Mug The Best Is Yet To Come",
+                    "Mug Today Is A Good Day"
+                ],
+                "prices": [
+                    "$18.90",
+                    "$28.72",
+                    "$19.12",
+                    "$11.90"
+                ],
+                "regularPrices": [
+                    "$35.90",
+                    "$23.90"
+                ]
+            },
+            "productsBeingShownLabel": "Showing 1-9 of 9 item(s)"
+        }
+    }
+}

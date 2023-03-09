@@ -1,12 +1,14 @@
 /// <reference types="cypress" />
 
 import footerPO from "../../../support/PageObjects/Footer/footerPO"
-import ourCompanyContentText from "../../../fixtures/ourCompanyContentText.json"
-import legalNoticeContentText from "../../../fixtures/legalNoticeContentText.json"
-import termsAndConditionsOfUseContentText from '../../../fixtures/termsAndConditionsOfUseContentText.json'
 import ourCompanyPO from "../../../support/PageObjects/Footer/our-companyPO"
 import productsPO from '../../../support/PageObjects/Footer/productsPO'
 import ourCompanyElements from "../../../support/Elements/Footer/ourCompanyElements"
+
+import ourCompanyContentText from "../../../fixtures/ourCompanyContentText.json"
+import legalNoticeContentText from "../../../fixtures/legalNoticeContentText.json"
+import termsAndConditionsOfUseContentText from '../../../fixtures/termsAndConditionsOfUseContentText.json'
+import productsData from "../../../fixtures/contentInsideProductScreen.json"
 
 
 describe('Test suite in the our company column at the footer', () => {
@@ -72,7 +74,7 @@ describe('Test suite in the our company column at the footer', () => {
                 it('Accessing and validating the Brands screen', () => {
                     cy.visit('/sitemap')
                     ourCompanyPO.accessAnyLinkInOurOfffersColumn(1, 'Brands', '/brands')
-                    ourCompanyPO.validateBrandsScreen('Home', 'Brands', 'Brands')
+                    ourCompanyPO.validateBrandsScreenMenu('Home', 'Brands', 'Brands')
                     cy.percySnapshot('Accessing and validating the Brands screen')
                 });
 
@@ -82,10 +84,25 @@ describe('Test suite in the our company column at the footer', () => {
                     ourCompanyPO.accessAnyMenuFromTheBrandsScreen('.' + ourCompanyElements.brandsInfosLink(), 1, '/2-graphic-corner')
                 });
 
-                it.only('Accessing the graphic corner canvas through the sitemap and validating the canvas components', () => {
+                it('Accessing the graphic corner canvas through the sitemap and validating the canvas components', () => {
                     cy.visit('/sitemap')
                     ourCompanyPO.accessAnyLinkInOurOfffersColumn(1, 'Graphic Corner', '/2-graphic-corner')
-                    ourCompanyPO.validateTheGraphicCornerScreen()
+                    ourCompanyPO.validateBrandsScreen('graphicCornerContentText.json')
+                });
+
+                it('Accessing the Studio Design canvas through the sitemap and validating the canvas components', () => {
+                    cy.visit('/sitemap')
+                    ourCompanyPO.accessAnyLinkInOurOfffersColumn(1, 'Studio Design', '/1-studio-design')
+                    ourCompanyPO.validateBrandsScreen('studioDesignContextText')
+                });
+
+                it('Access some product from the graphic corner screen', () => {
+                    cy.visit('/brand/2-graphic-corner')
+                    ourCompanyPO.validateSomeProductAtGraphicCorner(productsData.products.graphicCorner.productName, productsData.products.graphicCorner.productPrice, productsData.products.graphicCorner.productInformation, productsData.products.graphicCorner.paperTypeLabel, productsData.products.graphicCorner.paperTypes.ruled, productsData.products.graphicCorner.paperTypes.squarred, productsData.products.defaultInformations.policyInformations.security, productsData.products.defaultInformations.policyInformations.delivery, productsData.products.defaultInformations.policyInformations.return, productsData.products.graphicCorner.description, productsData.products.graphicCorner.productDetails.reference, productsData.products.graphicCorner.productDetails.inStock, productsData.products.graphicCorner.productDetails.composition, productsData.products.graphicCorner.productDetails.property )
+                });
+
+                it.only('Access some product from the Studio Design screen', () => {
+                    cy.visit('/brand/1-studio-design')
                 });
             });
         });

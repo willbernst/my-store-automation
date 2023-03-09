@@ -1,7 +1,6 @@
 import footerElements from "../../Elements/Footer/footerElements"
 import ourCompanyElements from "../../Elements/Footer/ourCompanyElements"
 
-
 class ourCompanyPO{
     validateOurCompanyColumn(){
         cy.get(ourCompanyElements.ourCompanyColumn()).should('be.visible')
@@ -62,7 +61,7 @@ class ourCompanyPO{
         cy.get(ourCompanyElements.sitemapPagesColumn()).children().should('have.length.at.least', 8)
     }
 
-    validateBrandsScreen(homeText?:string, brandsText?:string, brandsTitle?:string){
+    validateBrandsScreenMenu(homeText?:string, brandsText?:string, brandsTitle?:string){
         cy.get(ourCompanyElements.sitemapBrandsContainer()).find('ol').should('contain', homeText).and('contain', brandsText)
         cy.get(ourCompanyElements.title()).should('contain', brandsTitle)
 
@@ -84,15 +83,54 @@ class ourCompanyPO{
         cy.url().should('contain', url)
     }
 
-    validateTheGraphicCornerScreen(){
-        cy.fixture('graphicCornerContentText.json').then((data) => {
+    validateBrandsScreen(fixture){
+        cy.fixture(fixture).then((data) => {
             cy.get(ourCompanyElements.title()).should('contain', data.title).and('be.visible')
             cy.get(ourCompanyElements.subtitle()).should('contain', data.subtitle).and('be.visible')
             cy.get(ourCompanyElements.totalProductsLabel()).should('contain', data.totalOfProductsLabel)
             cy.get(ourCompanyElements.productsBeingShown()).should('contain', data.productsBeingShownLabel)
+            cy.iteratingOverAJSONObject()
         })
+    }
 
-        cy.iteratingOverAJSONObject()
+    validateSomeProductAtGraphicCorner(
+        productName, productPrice, 
+        productInformation, paperType, 
+        paperTypeDefault, chosenPaperType, 
+        securityReassurance, deliveryReassurance, 
+        returnReassurance, productDescripiton,
+        productReference,productInStock,  
+        productComposition, productProperty){
+        cy.get(ourCompanyElements.productMiniature()).eq(1).click().then(() => {
+            cy.get(ourCompanyElements.title()).should('be.visible').and('contain', productName)
+            cy.get(ourCompanyElements.priceInsideTheProductPage()).should('be.visible').and('contain', productPrice)
+            cy.get(ourCompanyElements.productDescriptionInsideTheProductPage()).should('be.visible').and('contain', productInformation)
+            cy.get(ourCompanyElements.paperTypeLabel()).should('be.visible').and('contain', paperType).then(() =>{
+                cy.get(ourCompanyElements.paperTypeSelect()).should('contain', paperTypeDefault)
+                cy.get(ourCompanyElements.paperTypeSelect()).select(chosenPaperType).should('contain', chosenPaperType)
+            })
+            cy.get(ourCompanyElements.quantityOfProductsLabel()).should('be.visible').and('contain', 'Quantity')
+            cy.get(ourCompanyElements.quantityWanted()).should('contain.value', 1)
+            cy.get(ourCompanyElements.addToCartButton()).should('be.visible').and('contain.text', 'Add to cart')
+            cy.get(ourCompanyElements.socialSharing()).children().should('have.length', 4)
+            cy.get(ourCompanyElements.blockReassurance()).should('be.visible').children().children().as('reassurance').then(() => {
+                cy.get('@reassurance').eq(0).should('contain', securityReassurance)
+                cy.get('@reassurance').eq(1).should('contain', deliveryReassurance)
+                cy.get('@reassurance').eq(2).should('contain', returnReassurance)
+            })
+            cy.get(ourCompanyElements.productDescription()).should('contain', productDescripiton).and('be.visible')
+            cy.get(ourCompanyElements.productDetailsLink()).click()
+            cy.get(ourCompanyElements.productDetails()).should('be.visible').then(() => {
+                cy.get(ourCompanyElements.productReference()).should('contain', productReference).and('be.visible')
+                cy.get(ourCompanyElements.productQuantity()).should('contain', productInStock).and('be.visible')
+                cy.get(ourCompanyElements.productComposition()).should('contain.html', productComposition).and('be.visible')
+                cy.get(ourCompanyElements.productProperty()).should('contain.html', productProperty).and('be.visible')
+            })
+        })
+    }
+
+    validateSomeProductAtStudioDesign(){
+
     }
 }
 

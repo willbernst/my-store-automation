@@ -1,5 +1,4 @@
-import graphicCornerContentText from '../fixtures/graphicCornerContentText.json'
-import ourCompanyElements from './Elements/Footer/ourCompanyElements'
+import brandsData from '../fixtures/contentInsideBrandsScreen.json'
 
 Cypress.Commands.add('loginViaGUI', () => {
     cy.visit('/login?back=my-account')
@@ -12,8 +11,8 @@ Cypress.Commands.add('loginViaGUI', () => {
 })
 
 Cypress.Commands.add('iteratingOverAJSONObject', () => {
-    const names:string[] = graphicCornerContentText.products.names
-    const prices:string[] = graphicCornerContentText.products.prices
+    const names:string[] = brandsData.brands.graphicCorner.products.names
+    const prices:string[] = brandsData.brands.graphicCorner.products.prices
 
     cy.get('.product-title').its('length').should('be.equal', 9)
     cy.get('.product-title').as('product-title').then($label => {
